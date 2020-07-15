@@ -75,9 +75,9 @@ class Card {
     }
 
     /*
-     * DRAW TOP
+     * DRAW BOTTOM
      * ----------------------------
-     * Draws the Top Parts for the Card.
+     * Draws the Bottom Parts for the Card.
      * ----------------------------
      * @param   {Boolean}   isDark  :   True if the Card is meant to be mostly Dark (Most Secret Rares: Megas, Gmax, Ace Spec, etc.)
      * @return  {String}    svg     :   An SVG Strings
