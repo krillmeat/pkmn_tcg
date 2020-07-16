@@ -9,8 +9,20 @@ $white: #FFF;
 $dark: #1C1C3A;
 
 
-.fill-white{fill:$white}
-.fill-dark{fill:$dark}
-.stroke-white{stroke:$white}
-.stroke-dark{stroke:$dark}
+.fill-white,.f-w{fill:$white}
+.fill-dark,.f-d{fill:$dark}
+.stroke-white,.s-w{stroke:$white}
+.stroke-dark,.s-d{stroke:$dark}
 .stroked{stroke-width:.5}
+
+@mixin w-w-s{
+    fill: $white;
+    stroke: $white;
+    stroke-width: .5;
+}
+
+@mixin d-d-s{
+    fill: $dark;
+    stroke: $dark;
+    stroke-width: .5;
+}

@@ -1,13 +1,39 @@
 @use '../SCSS/var';
 
-.card{ 
-    margin: 4px 4px 0 4px;
+#card-body{
 
-    svg{
+    svg.CARD{
         width: 180px;
         height: 252px;
 
         border: 1px solid rgba(255,255,255,.25);
             border-radius: 3px;
+
+        .BACKGROUND{
+            fill: #606060;
+        }
+
+        .INNER_BORDER{ @include var.w-w-s }
+        .OUTER_BORDER{ @include var.d-d-s }
+        
+        .TOP{
+            rect.TOP_RECT{ @include var.w-w-s }
+        }
+
+        .BOTTOM{
+            .BOTTOM_BAR{ @include var.w-w-s }
+            .SET_INFO{
+                rect{ @include var.w-w-s }
+            }
+        }
+
+        &.SPEC{
+            .INNER_BORDER{@include var.d-d-s }
+            .TOP{ rect.TOP_RECT{ @include var.d-d-s } }
+            .BOTTOM{ 
+                .BOTTOM_BAR{ @include var.d-d-s } 
+                .SET_INFO{ rect{ @include var.d-d-s } }
+            }
+        }
     }
 }

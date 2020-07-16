@@ -1,9 +1,7 @@
 class Card {
-    constructor(cardType, set, rarity, isDark){
-        this.cardType = cardType;
+    constructor(set, rarity){
         this.set = set;
         this.rarity = rarity;
-        this.isDark = isDark;
     }
 
     /*
@@ -12,17 +10,15 @@ class Card {
      * Draws the Card SVG into the Node Element
      * ----------------------------
      * @param   {Node}      elem    :   The Node Element that will have the Card Drawn in it (#card-body)
-     * @return  {String}    svg     :   An SVG String
      */
     drawCard = elem => {
         let svg;
 
         // let baseParts = this.drawBaseParts(isDark);
-        let setInfo = drawSetInfo(this.isDark, this.set, this.rarity);
 
         svg = `<svg class='CARD'></svg>`;
 
-        return svg;
+        elem.innerHTML = svg;
     }
 
     /*
@@ -33,12 +29,15 @@ class Card {
      * @param   {Boolean}   isDark  :   True if the Card is meant to be mostly Dark (Most Secret Rares: Megas, Gmax, Ace Spec, etc.)
      * @return  {Ojbect}    svgObj  :   An Object of SVG Strings. Must be an Object, since the Borders are not assembled together in the Z-Index
      */
-    drawBaseParts = () => {
+    drawBaseParts = (set, rarity) => {
         let svgObj = {};
 
         svgObj["outer"] = svgData.outerBorder;
         svgObj["inner"] = svgData.innerBorder;
         svgObj["background"] = svgData.background;
+        svgObj["setInfo"] = this.drawSetInfo(set, rarity);
+        svgObj["bottomBar"] = svgData.bottomBar;
+        svgObj["topRect"] = svgData.topRect;
 
         return svgObj;
     }
@@ -53,10 +52,10 @@ class Card {
      * @param   {String}    rarity  :   The Rarity of the Card (C,U,R,S)
      * @return  {String}    svg     :   An SVG String
      */
-    drawSetInfo = (isDark, set, rarity) => {
+    drawSetInfo = (set, rarity) => {
         let svg;
 
-        let back = `<rect class='fill-white stroke-white stroked' x='5.33' y='236.89' width='23.26' height='7'/>`;
+        let back = svgData.setInfoBack;
         let setIcon = `<g class='SET_ICON'>${svgData.setIcons[set.toLowerCase()]}</g>`;
 
         svg = `<g class='SET_INFO'>${back}<g></g></g>`;
@@ -96,5 +95,3 @@ class Card {
         return svg;
     }
 }
-
-try{module.exports = Card;}catch(e){/* EXPORT FOR TESTING ONLY */}

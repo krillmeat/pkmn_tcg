@@ -24,9 +24,13 @@
 
     <!-- CLASSES -->
     <script type="text/javascript" src="JS/CARD.js"></script>
+    <script type="text/javascript" src="JS/PKMN.js"></script>
 
     <script type="text/javascript">
-      
+    let cardBody = document.getElementById("card-body");
+      let demoCard = new PKMN("Bulbasaur",60,["grass","poison"],["basic"],1,null,"RG","C");
+
+      demoCard.drawCard(cardBody);
     </script>
 
 </body>
