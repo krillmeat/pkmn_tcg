@@ -1,11 +1,13 @@
-var assert = require('assert');
+const Card = require('../JS/CARD');
+var assert = require('assert').strict;
 var expect = require('chai').expect;
 var should = require('chai').should();
 
-describe('Array', function(){
-    describe('#indexOf()', function(){
-        it('should return -1 when the value is not present', function(){
-            assert.equal(-1,[1,2,3].indexOf(4));
-        })
+describe('Draw Card', function(){
+    const randoCard = new Card("pkmn","RG","R",false);
+    describe('Building Base', function(){
+        it('Base Parts should return an Array', function(){
+            expect(randoCard.drawBaseParts()).to.be.an('Object');
+        });
     })
 })

@@ -1,0 +1,13 @@
+@use '../SCSS/var';
+
+.card{ 
+    margin: 4px 4px 0 4px;
+
+    svg{
+        width: 180px;
+        height: 252px;
+
+        border: 1px solid rgba(255,255,255,.25);
+            border-radius: 3px;
+    }
+}

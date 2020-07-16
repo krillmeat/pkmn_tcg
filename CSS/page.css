@@ -1,1 +1,1 @@
-body{display:block;font-size:16px}body *{box-sizing:border-box}
+@font-face{font-family:"NexaRustSans-Black";src:url("../fonts/NexaRustSans-Black.otf")}.fill-white{fill:#fff}.fill-dark{fill:#1c1c3a}.stroke-white{stroke:#fff}.stroke-dark{stroke:#1c1c3a}.stroked{stroke-width:.5}body{display:block;font-size:16px;background-color:#1c1c3a}body *{box-sizing:border-box}#card-body{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;width:50%;margin-top:100px;transform:scale(2);transform-origin:0 0 0}

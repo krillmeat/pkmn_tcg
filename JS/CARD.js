@@ -18,6 +18,7 @@ class Card {
         let svg;
 
         // let baseParts = this.drawBaseParts(isDark);
+        let setInfo = drawSetInfo(this.isDark, this.set, this.rarity);
 
         svg = `<svg class='CARD'></svg>`;
 
@@ -30,14 +31,16 @@ class Card {
      * Draws the Base Parts for the Card. Things like background, borders, etc.
      * ----------------------------
      * @param   {Boolean}   isDark  :   True if the Card is meant to be mostly Dark (Most Secret Rares: Megas, Gmax, Ace Spec, etc.)
-     * @return  {Array}     svg     :   An Array of SVG Strings. Must be an Array, since the Borders are not assembled together in the Z-Index
+     * @return  {Ojbect}    svgObj  :   An Object of SVG Strings. Must be an Object, since the Borders are not assembled together in the Z-Index
      */
-    drawBaseParts = isDark => {
-        let svgArray = [];
+    drawBaseParts = () => {
+        let svgObj = {};
 
-        svgArray.push(`<path d=''/>`);
+        svgObj["outer"] = svgData.outerBorder;
+        svgObj["inner"] = svgData.innerBorder;
+        svgObj["background"] = svgData.background;
 
-        return svgArray;
+        return svgObj;
     }
 
     /*
@@ -53,7 +56,10 @@ class Card {
     drawSetInfo = (isDark, set, rarity) => {
         let svg;
 
-        svg = `<g class='SET_INFO'></g>`;
+        let back = `<rect class='fill-white stroke-white stroked' x='5.33' y='236.89' width='23.26' height='7'/>`;
+        let setIcon = `<g class='SET_ICON'>${svgData.setIcons[set.toLowerCase()]}</g>`;
+
+        svg = `<g class='SET_INFO'>${back}<g></g></g>`;
 
         return svg;
     }
@@ -90,3 +96,5 @@ class Card {
         return svg;
     }
 }
+
+try{module.exports = Card;}catch(e){/* EXPORT FOR TESTING ONLY */}

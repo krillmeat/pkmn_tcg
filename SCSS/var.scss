@@ -1,0 +1,16 @@
+@font-face{
+    font-family: 'NexaRustSans-Black';
+    src: url('../fonts/NexaRustSans-Black.otf')
+}
+
+$nexa: 'NexaRustSans-Black';
+
+$white: #FFF;
+$dark: #1C1C3A;
+
+
+.fill-white{fill:$white}
+.fill-dark{fill:$dark}
+.stroke-white{stroke:$white}
+.stroke-dark{stroke:$dark}
+.stroked{stroke-width:.5}
