@@ -18,6 +18,87 @@
         
         .TOP{
             rect.TOP_RECT{ @include var.w-w-s }
+            
+            .NAME{
+                text{
+                    font-family: var.$nexa;
+                    fill: var.$dark;
+                    font-size: 12px;
+                }
+            }
+
+            .HP{
+                .HP_SHAPES{
+                    polygon,rect{
+                        fill: var.$red;
+                    }
+                    text.MINI_HP{
+                        font-family: var.$nexa;
+                        fill: var.$white;
+                        font-size: 6px;
+                    }
+                }
+
+                text.HP_NO{
+                    font-family: var.$nexa;
+                    font-size: 12px;
+                    fill: var.$white;
+                }
+            }
+
+            .STAGE{
+                rect, polygon{
+                    fill: var.$dark;
+                    stroke: var.$dark;
+                    stroke-width: 0.5;
+                }
+
+                text{
+                    font-family: var.$nexa;
+                    font-size: 4.5px;
+                    letter-spacing: .75px;
+                    fill: var.$white;
+                }
+
+                .STAGE_SUB{
+                    text{font-size: 3.5px;}
+                }
+            }
+
+            .TYPE{
+                &.GRASS *:not(g):not(text){fill: var.$grass !important;}
+                &.POISON *:not(g):not(text){fill: var.$poison !important;}
+            }
+
+            .TYPE_BARS{
+                .ICON_BLOCK{
+                    & > polygon{ stroke-width: 1 }
+
+                    &.GRASS > polygon{
+                        fill: var.$grass;
+                        stroke: var.$grass;
+                    }
+
+                    &.POISON > polygon{
+                        fill: var.$poison;
+                        stroke: var.$poison;
+                    }
+
+                    .ICON *{fill: var.$white;}
+                }
+                .TEXT_BLOCK{ 
+                    polygon{
+                        fill: var.$white;
+                        stroke: var.$white;
+                    }
+
+                    text{
+                        font-family: var.$nexa;
+                        fill: var.$dark;
+                        font-size: 5px;
+                    }
+                }
+            }
         }
 
         .BOTTOM{
@@ -35,5 +116,5 @@
                 .SET_INFO{ rect{ @include var.d-d-s } }
             }
         }
-    }
+    } /* CARD SVG */
 }

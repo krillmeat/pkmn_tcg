@@ -58,13 +58,89 @@ class PKMN extends Card{
     drawTop = (pkmnName, types, hp, stage) => {
         let svg;
 
-        let typeIcons = this.isDualType ? buildTypeIcon(types[0]) + buildTypeIcon(types[1]) : buildTypeIcon(types[0]);
+        let typeIcons = this.isDualType ? `<g class='TOP_TYPES'>${buildTypeIcon(types, 0, TOP_TYPE_SCALE) + buildTypeIcon(types, 1, TOP_TYPE_SCALE)}</g>` : `<g class='TOP_TYPES'>${buildTypeIcon(types, 0, TOP_TYPE_SCALE)}</g>`;
+
+        let nameOffset = this.isDualType ? NAME_DUAL_TYPE_OFFSET : NAME_SINGLE_TYPE_OFFSET;
+        let nameChunk = `<g class='NAME' transform='translate(${nameOffset})'><text>${pkmnName}</text></g>`;
+
+        let hpOffset = hp >= 100 ? HP_OFFSET_TRIPLE_DIGIT : HP_OFFSET_DOUBLE_DIGIT;
+        let hpChunk = `<g class='HP'>${svgData.hpShapes}<text class='HP_NO' transform='translate(${hpOffset})'>${hp}</text></g>`;
+
+        let stageChunk = this.drawStage(stage);
+
+        let typeBarsChunk = this.isDualType ? (this.drawTypeBar(types,false) + this.drawTypeBar(types,true)) : this.drawTypeBar(types,false);
+        let typeBars = `<g class='TYPE_BARS' transform='translate(${TYPE_BARS_OFFSET})'>${typeBarsChunk}</g>`;
 
         svg = `<g class='TOP'>
                ${this.baseParts.topRect}
-               <g class='TOP_CONTENT'>
+               <g class='TOP_CONTENT' transform='translate(${TOP_CONTENT_OFFSET})'>
                ${typeIcons}
-               </g></g>`;
+               ${nameChunk}
+               ${hpChunk}
+               </g>
+               ${stageChunk}
+               ${typeBars}
+               </g>`;
+
+        return svg;
+    }
+
+    /*
+     * DRAW STAGE
+     * ----------------------------
+     * Draws the Stage Section at the Top of the Card.
+     * ----------------------------
+     * @param   {Array}     stage   :   The Stage Data. [String, String]
+     * @return  {String}    svg     :   An SVG Strings
+     */
+    drawStage = stage => {
+        let svg;
+        let warp = STAGE_SHAPE_WARP[stage[0].replace(/\s/g, '')];
+        let subText = (stage[1] != undefined && stage[1] != "") ? `Evolves from ${stage[1]}` : "Put this PKMN on the Bench";
+        let stageOffset = STAGE_MOD_OFFSET;
+        let mainStage = `<g class='STAGE_MAIN'>
+                         <polygon points='${33.9+warp},8.2 ${33.9+warp},1.2 1.4,1.2 1.4,8.2 1.4,8.2 1.4,18.2 21,18.2 26.6,8.2'/>
+                         <text transform='translate(${STAGE_MAIN_TEXT_OFFSET})'>${stage[0]}</text>
+                         </g>`;
+        let subStage = `<g class='STAGE_SUB'>
+                        <rect x='${36.6+warp}' y='1.2' width='${107.5 - warp}' height='6.9'/>
+                        <text transform='translate(${41 + warp},6)'>${subText}</text>
+                        </g>`;
+
+        svg = `<g class='STAGE' transform='translate(${STAGE_OFFSET})'>${mainStage} ${subStage}</g>`;
+
+        return svg;
+    }
+
+    /*
+     * DRAW TYPE BARS
+     * ----------------------------
+     * Draws the Stage Section at the Top of the Card.
+     * ----------------------------
+     * @param   {Array}     stage       :   The Stage Data. [String, String]
+     * @param   {Boolean}   isTypeTwo   :   True if the Type Bar is for the PKMN's Second Type
+     * @return  {String}    svg         :   An SVG Strings
+     */
+    drawTypeBar = (types,isTypeTwo) => {
+        let svg;
+
+        let type = isTypeTwo ? types[1] : types[0];
+
+        let typeNumber = isTypeTwo ? "TWO" : "ONE";
+        let typeLengthMod = 4 * (type.length - 3);
+
+        let typeBarOffset = isTypeTwo ? ( 40.5 + ( 4 * (types[0].length - 3) ) ) : 0;
+
+        let iconBlock = `<g class='ICON_BLOCK ${type.toUpperCase()}'>
+                         ${TYPE_BAR_ICON_POLYGON}
+                         <g class='ICON' transform='translate(${TYPE_BAR_ICON_OFFSET})'>${svgData.typeIcons[type]}</g>
+                         </g>`;
+        let textBlock = `<g class='TEXT_BLOCK'>
+                         <polygon points='18.5,0.51 ${40+typeLengthMod},0.51 ${36+typeLengthMod},7.51 14.5,7.51'/>
+                         <text transform='translate(${TYPE_BAR_TEXT_OFFSET})'>${type}
+                         </g>`;
+
+        svg = `<g class='TYPE_BAR_${typeNumber}' transform='translate(${typeBarOffset},0)'>${iconBlock} ${textBlock}</g>`;
 
         return svg;
     }
@@ -75,7 +151,7 @@ class PKMN extends Card{
      * Draws the Bottom Parts for the Card.
      * @Override
      * ----------------------------
-     * @param   {Boolean}   isDark  :   True if the Card is meant to be mostly Dark (Most Secret Rares: Megas, Gmax, Ace Spec, etc.)
+     *
      * @return  {String}    svg     :   An SVG Strings
      */
     drawBottom = (setInfo, types, retreatCost) => {
