@@ -1,11 +1,12 @@
 class PKMN extends Card{
-    constructor(pkmnName,hp,types,stage,retreatCost,special,...args){
+    constructor(pkmnName,hp,types,stage,retreatCost,special,skills,...args){
         super(...args);
         this.pkmnName = pkmnName;
         this.hp = hp;
         this.types = types;
         this.stage = stage;
         this.retreatCost = retreatCost;
+        this.skills = skills;
 
         this.isDualType = (this.types.length == 2);
 
@@ -13,7 +14,9 @@ class PKMN extends Card{
         this.isGmax = (this.isSpecial && special.toLowerCase() == "gmax");
         this.isMega = (this.isSpecial && special.toLowerCase() == "mega");
 
-        this.baseParts = this.drawBaseParts(this.set, this.rarity)
+        this.baseParts = this.drawBaseParts(this.set, this.rarity);
+
+        this.typeEffect = this.calcWeakResist(this.types);
     }
 
     /*
@@ -31,11 +34,13 @@ class PKMN extends Card{
         let bottom = this.drawBottom(this.baseParts.setInfo, this.types, this.retreatCost);
         let top = this.drawTop(this.pkmnName, this.types, this.hp, this.stage);
         let cardClasses = this.isSpecial ? "CARD PKMN SPEC" : "CARD PKMN";
+        let body = this.drawBody(this.skills);
 
         svg = `<svg class='${cardClasses}' ${svgData.baseSvg}>
                ${this.baseParts["background"]}
                ${bottom}
                ${this.baseParts["inner"]}
+               ${body}
                ${top}
                ${this.baseParts["outer"]}
                </svg>`;
@@ -152,13 +157,83 @@ class PKMN extends Card{
      * @Override
      * ----------------------------
      *
-     * @return  {String}    svg     :   An SVG Strings
+     * @return  {String}    svg     :   An SVG String
      */
     drawBottom = (setInfo, types, retreatCost) => {
         let svg;
 
-        svg = `<g class='BOTTOM'>${this.baseParts["bottomBar"]}${setInfo}</g>`;
+        let resistOffset = 20 + 0;
+
+        let weakBlock = `<g class='WEAKNESS'>${TYPE_WEAK_GROUP}</g>`;
+        let resistBlock = `<g class='RESISTANCE' transform='translate(${resistOffset},0)'>${TYPE_RESIST_GROUP}</g>`;
+
+        let typeEffectBlock = `<g class='TYPE_EFFECT' transform='translate(${TYPE_EFFECT_OFFSET})'>${weakBlock + resistBlock}</g>`;
+
+        svg = `<g class='BOTTOM' transform='translate(6,233)'>${this.baseParts["bottomBar"]}${setInfo}${typeEffectBlock}</g>`;
 
         return svg;
+    }
+
+    /*
+     * DRAW BODY
+    * ----------------------------
+     * Draws the Body Parts for the Card.
+     * @Override
+     * ----------------------------
+     * @param   {Array}     skills  :   An Array of Skill Objects
+     * @return  {String}    svg     :   An SVG String
+     */
+    drawBody = skills => {
+        let svg;
+
+        let skillsBlock = "";
+        let skillOffset = 0;
+        let overallHeight = 0;
+
+        for(let i = 0; i < skills.length; i++){
+            skillOffset = i != 0 ? ( skills[i-1].calcHeight() / 2 ) + 5 : 0;
+            skillsBlock += `<g class='SKILL' transform='translate(2,${skillOffset})'>${skills[i].drawSkill()}</g>`;
+            overallHeight += skills[i].calcHeight();
+        }
+
+        let skillTop = 230 - (overallHeight/2) - (skills.length * 4.5);
+
+        svg = `<g class='SKILLS' transform='translate(0,${skillTop})'>${skillsBlock}</g>`;
+
+        return svg;
+    }
+
+    /*
+     * CALCULATE WEAKNESS & RESISTANCE
+    * ----------------------------
+     * Sets up the Array that handles your Weak/Resist Types
+     * ----------------------------
+     * @param   {Array}     types   :   An Array of Type Strings
+     * @return  {Array}     a       :   An Array of two Arrays of Type Strings
+     */
+    calcWeakResist = types => {
+        let a;
+
+        let typeOneWeak = typeDb.matchups[types[0]][0];
+        let typeTwoWeak = this.isDualType ? typeDb.matchups[types[1]][0] : [];
+        let typeOneResist = typeDb.matchups[types[0]][1];
+        let typeTwoResist = this.isDualType ? typeDb.matchups[types[1]][1] : [];
+        let weak = [];
+        let resist = [];
+
+        console.log("TYPE ONE WEAK: ",typeOneWeak);
+        console.log("TYPE TWO WEAK: ",typeTwoWeak);
+        console.log("TYPE ONE WEAK: ",typeOneResist);
+        console.log("TYPE TWO WEAK: ",typeTwoResist);
+
+        if(this.isDualType){
+            for(let i = 0; i < typeDb.types.length; i++){
+
+            }
+        }
+
+        a = [weak,resist];
+
+        return a;
     }
 }

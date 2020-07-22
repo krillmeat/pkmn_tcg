@@ -56,9 +56,11 @@ class Card {
         let svg;
 
         let back = svgData.setInfoBack;
-        let setIcon = `<g class='SET_ICON'>${svgData.setIcons[set.toLowerCase()]}</g>`;
+        let setIcon = `<g class='SET_ICON' transform='translate(.75,3.5) scale(.9)'>${svgData.setIcons[set.toLowerCase()]}</g>`;
+        let cardRarity = `<text class='RARITY' transform='translate(8,9)'>${rarity}</text>`;
+        let setNumber = `<text class='SET_NUMBER' transform='translate(14,8.6)'>${"000"}</text>`;
 
-        svg = `<g class='SET_INFO'>${back}<g></g></g>`;
+        svg = `<g class='SET_INFO'>${back}<g>${setIcon}${cardRarity}${setNumber}</g></g>`;
 
         return svg;
     }
@@ -91,6 +93,17 @@ class Card {
         let svg;
 
         svg = `<g class='BOTTOM'></g>`;
+
+        return svg;
+    }
+
+    /*
+     * DRAW BODY
+     */
+    drawBody = () => {
+        let svg;
+
+        svg = "";
 
         return svg;
     }

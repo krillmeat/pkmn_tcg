@@ -3,14 +3,16 @@ const svgData = {
     innerBorder: "<g class='INNER_BORDER'><path d='M0,0.42v251.67h179V0.42H0z M173,246.08H6.33v-240H173V246.08z'/></g>",
     outerBorder:"<g class='OUTER_BORDER'><path d='M0,0v252.25h179.5V0H0z M176.5,249.5H3.33V3.17H176.5V249.5z'/></g>",
     background:"<rect class='BACKGROUND' x='0.5' y='1.5' width='178' height='249'/>",
-    bottomBar: "<rect class='BOTTOM_BAR' x='6.11' y='233' width='167.41' height='1.19'></rect>",
-    setInfoBack: "<rect x='5.33' y='236.89' width='23.26' height='7'/>",
+    bottomBar: "<rect class='BOTTOM_BAR' x='0' y='0' width='167.41' height='1.19'></rect>",
+    setInfoBack: "<rect x='0' y='3.5' width='23.26' height='7'/>",
     topRect: "<rect class='TOP_RECT' x='1.67' y='0.42' width='177.33' height='22'/>",
     hpShapes: "<g class='HP_SHAPES'><polygon points='135,19 135,-2 166.5,-4.64 166.5,19'/><rect x='142.25' y='11.17' width='17.33' height='19'/><text transform='translate(146.5,26)' class='MINI_HP'>HP</text></g>",
     typeBars: {
         iconBlock: "",
         textBlock: ""
     },
+    costOffside: "<polygon points='8.71,11.44 1.7,11.44 1.7,2.83 12.71,2.83'/>",
+    costIcon: "<polygon points='12.07,9.46 1.06,9.46 5.06,0.85 16.07,0.85'/>",
     setIcons: {
         rg: "<circle cx='3.96' cy='3.92' r='0.97'/><g><path d='M5.7,4.67C5.41,5.34,4.75,5.81,3.96,5.81S2.51,5.34,2.23,4.67H1.39c0.32,1.12,1.35,1.93,2.58,1.93 c1.22,0,2.25-0.81,2.58-1.93C6.55,4.67,5.7,4.67,5.7,4.67z'/></g><path d='M2.52,3.93V3.92c0-0.8,0.65-1.45,1.45-1.45s1.45,0.65,1.45,1.45v0.01h1.23V3.92c0-1.47-1.2-2.68-2.68-2.68 S1.3,2.44,1.3,3.92v0.01C1.3,3.93,2.52,3.93,2.52,3.93z'/>",
         gs: "<g><path d='M3,6.3c0,0-0.3-0.6,0-1.1s0.7-0.9,0.5-1.3C3.3,3.4,3,3.2,3,3.2s0.1,0.5-0.3,1c0,0-0.2,0.2-0.2,0.6 c0,0-1-1.4,0.3-2.4c0,0,1.1,0.5,1.1,1.6c0,0,1.8-1.3,0.3-2.8c0,0-0.1,0.3-0.7,0.7C3.5,2,3.4,2.1,3.4,2.1S3,1.7,3.1,1.3 c0,0-1.8,0.6-1.9,2.3S3,6.3,3,6.3z'/><path d='M6.5,5c0,0-0.1-0.6-0.8-0.7c0,0,1.6-1.9-0.6-2.8c0,0,1,1.4-0.6,2.8l-0.1,0c0,0,0.1,0,0.1,0 c0.3,0,0.6,0.3,0.6,0.6c0,0.3-0.3,0.6-0.6,0.6C4.2,5.6,4,5.3,4,4.9C4,4.9,4,4.8,4,4.7C3.8,4.9,3.1,5.6,3.6,6.2 c0.6,0.7,1.7,0.5,2.3-0.1S6.5,5.3,6.5,5z'/></g>",
@@ -34,7 +36,12 @@ const svgData = {
         dark: "",
         steel: "",
         fairy: "",
-        normal: ""
+        normal: "<path d='M4.04,6.72c-1.47,0-2.67-1.2-2.67-2.67s1.2-2.67,2.67-2.67s2.67,1.2,2.67,2.67S5.51,6.72,4.04,6.72z M4.04,2.51c-0.85,0-1.53,0.69-1.53,1.53c0,0.85,0.69,1.53,1.53,1.53c0.85,0,1.53-0.69,1.53-1.53C5.57,3.2,4.88,2.51,4.04,2.51z'/>"
+    },
+    typeFontIconCodes: {
+        pkmn: "&#xe90d",
+        grass: "&#xe909",
+        poison: "&#xe90e"
     }
 }
 
@@ -66,3 +73,15 @@ const TYPE_BAR_ONE_OFFSET = "0,0";
 const TYPE_BAR_ICON_POLYGON = "<polygon points='4.48,0.51 18.55,0.51 14.55,7.51 0.51,7.51'/>";
 const TYPE_BAR_ICON_OFFSET = "5.5,0";
 const TYPE_BAR_TEXT_OFFSET = "22,6";
+
+const SKILL_COST_ICON_TYPE_OFFSET = "4.5,1.25";
+
+const SKILL_DMG_TYPE_POLYGON = "<polygon points='22,11.4 0,11.4 4,2.8 22,2.8'/>";
+const SKILL_DMG_TYPE_ICON_OFFSET = "5,3.25";
+const SKILL_DMG_MOD_ICON_PLUS = "<polygon points='4.8,2.4 3.6,2.4 3.6,1.2 2.5,1.2 2.5,2.4 1.3,2.4 1.3,3.5 2.5,3.5 2.5,4.7 3.6,4.7 3.6,3.5 4.8,3.5' />";
+const SKILL_DMG_MOD_ICON_MULT = "<polygon points='4.7,3.8 3.9,3 4.7,2.1 3.9,1.3 3,2.1 2.2,1.3 1.4,2.1 2.2,3 1.4,3.8 2.2,4.6 3,3.8 3.9,4.6' />";
+const SKILL_DESC_TYPE_OFFSET = "9,26";
+
+const TYPE_EFFECT_OFFSET = "15,-7";
+const TYPE_WEAK_GROUP = "<g><rect class='fill-white' x='10' y='10' width='10' height='10'/><text transform='translate(12,17)'>W</text></g>";
+const TYPE_RESIST_GROUP = "<g><rect class='fill-white' x='10' y='10' width='10' height='10'/><text transform='translate(13,17)'>R</text></g>";

@@ -101,10 +101,104 @@
             }
         }
 
+        .SKILLS{
+            .SKILL{
+                .ATTACK_TOP{
+                    text{
+                        font-family: var.$nexa;
+                        fill: var.$dark;
+                        font-size: 6px;
+                    }
+
+                    .NAME{
+                        & > polygon{
+                            fill: var.$white;
+                            stroke: var.$white;
+                            stroke-width: .5;
+                        }
+                    }
+
+                    .COST{
+                        .ATTACK_COST{
+                            .COST_ICON{
+                                &.GRASS > polygon,
+                                &.GRASS .COST_OFFSIDE{
+                                    fill: var.$grass;
+                                    stroke: var.$grass;
+                                    stroke-width: .5;
+                                }
+
+                                .COST_ICON_TYPE *:not(g){fill: var.$white}
+                            }
+                        }
+                    }
+
+                    .DMG_TYPE{
+                        .DMG_ICON *:not(g){
+                            fill: var.$white;
+                        }
+                    }
+
+                    .SKILL_DMG_POLYGON{
+                        fill: var.$white;
+                            stroke: var.$white;
+                            stroke-width: .5;
+                    }
+                }
+
+                .SKILL_DESCRIPTION{
+                    text{
+                        fill: var.$dark;
+                        font-family: var.$montserrat;
+                        font-size: 5px;
+
+                        tspan{
+                            &.desc-bold{
+                                font-family: var.$nexa;
+                                font-size: 5.25px;
+                            }
+                        }
+                    }
+
+                    & > rect {
+                        fill: var.$white;
+                        stroke: var.$white;
+                        stroke-width: .5;
+                    }
+                }
+            }
+        }
+
         .BOTTOM{
             .BOTTOM_BAR{ @include var.w-w-s }
             .SET_INFO{
                 rect{ @include var.w-w-s }
+
+                .SET_ICON *:not(g){
+                    fill: var.$dark;
+                }
+            }
+
+            .RARITY{
+                font-family: var.$nexa;
+                font-size: 5.5px;
+                fill: var.$dark;
+                font-weight: 900;
+            }
+
+            .SET_NUMBER{
+                font-family: var.$montserrat;
+                font-size: 3.5px;
+            }
+
+            .TYPE_EFFECT{
+                .WEAKNESS,
+                .RESISTANCE{
+                    text{
+                        font-family: var.$nexa;
+                        font-size: 5px;
+                    }
+                }
             }
         }
 
@@ -116,5 +210,34 @@
                 .SET_INFO{ rect{ @include var.d-d-s } }
             }
         }
+
+
+        // ALL OF THE COLORS!!
+        .COST .COST_ICON.GRASS > polygon,
+        .COST_OFFSIDE.GRASS > polygon,
+        .DMG.GRASS .DMG_TYPE > polygon{
+            fill: var.$grass;
+            stroke: var.$grass;
+            stroke-width: .5;
+        }
+
+        .COST .COST_ICON.POISON > polygon,
+        .COST_OFFSIDE.POISON > polygon,
+        .DMG.POISON .DMG_TYPE > polygon{
+            fill: var.$poison;
+            stroke: var.$poison;
+            stroke-width: .5;
+        }
+
+        .COST .COST_ICON.NORMAL > polygon,
+        .COST_OFFSIDE.NORMAL > polygon,
+        .DMG.NORMAL .DMG_TYPE > polygon{
+            fill: var.$normal;
+            stroke: var.$normal;
+            stroke-width: .5;
+        }
+
+        .desc-bold.grass{fill: var.$grass}
+        .desc-bold.poison{fill: var.$poison}
     } /* CARD SVG */
 }
