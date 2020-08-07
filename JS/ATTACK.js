@@ -35,7 +35,7 @@ class ATTACK extends SKILL {
     drawTop = (type, cost, skillName) => {
         let svg;
         
-        let costOffside = `<g class='COST_OFFSIDE ${type.toUpperCase()}'>${svgData.costOffside}</g>`;
+        let costOffside = `<g class='COST_OFFSIDE ${type.toUpperCase()}-ALL'>${svgData.costOffside}</g>`;
         let costBlock = `<g class='COST' transform='translate(10,0)'>${this.drawCost(cost)}</g>`
         let dmgBlock = this.drawSkillDmg(this.dmg, this.type);
         let nameBlock = this.drawSkillName(cost, skillName, this.dmgTextPolyWidth);
@@ -52,7 +52,7 @@ class ATTACK extends SKILL {
         let costBlock = "";
 
         for(let i = 0; i < cost.length; i++){
-            costBlock += `<g class='COST_ICON ${cost[i].toUpperCase()}' transform='translate(${(i * 13.25)},0)'>${this.drawCostIcon(cost[i])}</g>`;
+            costBlock += `<g class='COST_ICON ${cost[i].toUpperCase()}-ALL' transform='translate(${(i * 13.25)},0)'>${this.drawCostIcon(cost[i])}</g>`;
         }
 
         svg = `<g class='ATTACK_COST' transform='translate(.5,2)'>${costBlock}</g>`;
@@ -90,7 +90,7 @@ class ATTACK extends SKILL {
         let isMultMod = modChar === "x";
         let isMod = isMultMod || isPlusMod;
 
-        svg = `<g class='DMG ${type.toUpperCase()}' transform='translate(155,0)'>${this.drawSkillDmgPolygon(dmg,isMod,modChar)}<g class='DMG_TYPE'>${SKILL_DMG_TYPE_POLYGON}<g class='DMG_ICON' transform='translate(${SKILL_DMG_TYPE_ICON_OFFSET})'>${svgData.typeIcons[type]}</g></g></g>`;
+        svg = `<g class='DMG ${type.toUpperCase()}-ALL' transform='translate(155,0)'>${this.drawSkillDmgPolygon(dmg,isMod,modChar)}<g class='DMG_TYPE'>${SKILL_DMG_TYPE_POLYGON}<g class='DMG_ICON' transform='translate(${SKILL_DMG_TYPE_ICON_OFFSET})'>${svgData.typeIcons[type]}</g></g></g>`;
 
         return svg;
     }
@@ -104,7 +104,7 @@ class ATTACK extends SKILL {
         let modShape = "";
 
         if(isMod){ 
-            modShape = modChar == "+" ? SKILL_DMG_MOD_ICON_PLUS : SKILL_DM_MOD_ICON_MULT;
+            modShape = modChar == "+" ? SKILL_DMG_MOD_ICON_PLUS : SKILL_DMG_MOD_ICON_MULT;
             modDmg = dmg.substring(0,dmg.length-1);
         }
 
@@ -140,7 +140,7 @@ class ATTACK extends SKILL {
         this.dmgTextPolyWidth = polyWidth;
 
         svg = !isNoDmg ? `<polygon class='SKILL_DMG_POLYGON' transform='translate(${polyOffset},0)' points='${blP + polyWidth},11.4 ${blP},11.4 ${blP + 4},2.8 ${blP + polyWidth + 4},2.8' />
-                         <g transform='translate(${textOffset},9.5)'><text>${modDmg}</text><g transform='translate(${8.5 + modIconOffset},-5.25)'>${modShape}</g></g>` :
+                         <g class='SKILL_DMG_TEXT' transform='translate(${textOffset},9.5)'><text>${modDmg}</text><g transform='translate(${8.5 + modIconOffset},-5.25)'>${modShape}</g></g>` :
                          "";
 
         return svg;

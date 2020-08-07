@@ -3,11 +3,13 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link href="FONTS/icon-font/style.css" rel="stylesheet">
 
 <link href="CSS/reset.css" rel="stylesheet">
 <link href="CSS/page.css" rel="stylesheet">
+<link href="CSS/filter.css" rel="stylesheet">
 <link href="CSS/card.css" rel="stylesheet">
 <!-- <link href="CSS/filter.css" rel="stylesheet"> -->
 
@@ -15,8 +17,45 @@
 
 <body> 
 
-    <nav id="filter">
-    </nav>
+  <div id="filter">
+    <div class="filter-group">
+      <p class='label'>CARD</p>
+      <ul class='card-types'>
+        <li data-card="pkmn" data-status='selected'><img src='MEDIA/ICONS/OTHER/pkmn-icon.svg'/></li>
+        <li data-card="energy" data-status='selected'><img src='MEDIA/ICONS/SET/eg.svg'/></li>
+        <li data-card="trainer" data-status='selected'><img src='MEDIA/ICONS/OTHER/item-icon.svg'/></li>
+      </ul>
+    </div>
+    <div class="filter-group" data-subset="pkmn trainer">
+        <p class='label'>SET</p>
+        <ul class="sets">
+            <li data-set="clear" data-status='deselected'><img src='MEDIA/ICONS/OTHER/x-icon.svg'/></li>
+            <li data-set="all" data-status='deselected'><img src='MEDIA/ICONS/OTHER/inf-icon.svg'/></li>
+            <li data-set="rg" data-status='deselected'><img src='MEDIA/ICONS/SET/rg.svg'/></li>
+            <li data-set="gs" data-status='deselected'><img src='MEDIA/ICONS/SET/gs.svg'/></li>
+            <li data-set="rs" data-status='deselected'><img src='MEDIA/ICONS/SET/rs.svg'/></li>
+            <li data-set="dp" data-status='deselected'><img src='MEDIA/ICONS/SET/dp.svg'/></li>
+            <li data-set="xy" data-status='deselected'><img src='MEDIA/ICONS/SET/xy.svg'/></li>
+            <li data-set="eg" data-status='deselected'><img src='MEDIA/ICONS/SET/eg.svg'/></li>
+        </ul>
+    </div>
+    <div class="filter-group" data-subset="pkmn energy">
+      <p class='label'>TYPE</p>
+        <ul class="types">
+            <li data-type="grass" data-status='selected'><img src='MEDIA/ICONS/TYPE/grass.svg'/></li>
+            <li data-type="fire" data-status='selected'><img src='MEDIA/ICONS/TYPE/fire.svg'/></li>
+            <li data-type="water" data-status='selected'><img src='MEDIA/ICONS/TYPE/water.svg'/></li>
+            <li data-type="electric" data-status='selected'><img src='MEDIA/ICONS/TYPE/electric.svg'/></li>
+            <li data-type="rock" data-status='selected'><img src='MEDIA/ICONS/TYPE/rock.svg'/></li>
+            <li data-type="ground" data-status='selected'><img src='MEDIA/ICONS/TYPE/ground.svg'/></li>
+            <li data-type="poison" data-status='selected'><img src='MEDIA/ICONS/TYPE/poison.svg'/></li>
+            <li data-type="bug" data-status='selected'><img src='MEDIA/ICONS/TYPE/bug.svg'/></li>
+            <li data-type="flying" data-status='selected'><img src='MEDIA/ICONS/TYPE/flying.svg'/></li>
+            <li data-type="dragon" data-status='selected'><img src='MEDIA/ICONS/TYPE/dragon.svg'/></li>
+            <li data-type="normal" data-status='selected'><img src='MEDIA/ICONS/TYPE/normal.svg'/></li>
+        </ul>
+    </div>
+  </div>
 
     <div id="card-body"><!-- JS DRAW ZONE --></div>
 
@@ -31,15 +70,20 @@
     <script type="text/javascript" src="JS/ATTACK.js"></script>
     <script type="text/javascript" src="JS/CARD.js"></script>
     <script type="text/javascript" src="JS/PKMN.js"></script>
+    <script type="text/javascript" src="JS/ENERGY.js"></script>
+
+    <script type="text/javascript" src="DB/cards-db.js"></script>
+    <script type="text/javascript" src="JS/filter.js"></script>
 
     <script type="text/javascript">
-    let cardBody = document.getElementById("card-body");
-      let demoCard = new PKMN("Bulbasaur",60,["grass","poison"],["basic"],1,null,
-                              [new ATTACK("grass",["normal"],"0","Growth","Attach a [{grass}#] or [{poison}#] [energy] from your [hand] to this [PKMN]."),
-                               new ATTACK("poison",["poison","normal"],"20","Poison Barb", "Put a [{poison}psn token] on the [defending] [PKMN].")]
-                              ,"RG","C");
+    
+    let rg = cardData.rg;
 
-      demoCard.drawCard(cardBody);
+      // for(var key of Object.keys(rg)){
+      //   rg[key].drawCard(cardBody);
+      // }
+
+    
     </script>
 
 </body>

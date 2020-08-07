@@ -7,6 +7,14 @@ class SKILL {
         this.height = 0;
     }
 
+    drawSkill = () => {
+        let svg = "HI THERE";
+
+        svg = this.drawDesc(this.desc);
+
+        return svg;
+    }
+
     /*
      * DRAW TOP
      * ----------------------------
@@ -96,23 +104,28 @@ class SKILL {
         
         let isPKMN = noBrackets.toLowerCase() == "pkmn";
         let hasEnergy = noBrackets.indexOf("#") != -1;
+        let isNumber = !isNaN(noBrackets);
 
         // REPLACE ENERGY SYMBOLS
         if(hasEnergy){
             energyIcon = colorClass;
-            noBrackets = noBrackets.replace("#",`<tspan class='icon'>${svgData.typeFontIconCodes[energyIcon]}</tspan>`);
+            noBrackets = noBrackets.replace("#",`<tspan class='ICON'>${svgData.typeFontIconCodes[energyIcon]}</tspan>`);
+        }
+
+        if(isNumber){
+            classLabel = "NUMBER";
         }
 
         // REPLACE PKMN
         if(isPKMN){
-            noBrackets = noBrackets.replace("PKMN",`<tspan class='icon heavy'>${svgData.typeFontIconCodes.pkmn}</tspan>`);
+            noBrackets = noBrackets.replace("PKMN",`<tspan class='ICON HEAVY'>${svgData.typeFontIconCodes.pkmn}</tspan>`);
         }
 
         // CHECK FOR OTHER TEXT
         
         // CHECK FOR BRACES
 
-        svg = `<tspan class='desc-bold ${classLabel} ${colorClass}'>${noBrackets}</tspan>`;
+        svg = `<tspan class='DESC_BOLD ${classLabel} ${colorClass.toUpperCase()}'>${noBrackets}</tspan>`;
 
         return svg;
     }
@@ -142,8 +155,6 @@ class SKILL {
             }
         }
 
-        console.log(a);
-
         return a;
     }
 
@@ -160,7 +171,9 @@ class SKILL {
 
         let descBaseOffset = this.lineNo >= 1 ? 43.08 : 0;
 
-        n = 17.32 + descBaseOffset + ( (this.lineNo - 1) * 18.5 );
+        let lineCalc = this.lineNo !== 0 ? this.lineNo - 1 : 0;
+
+        n = 17.32 + descBaseOffset + ( lineCalc * 18.5 );
 
         return n;
     }

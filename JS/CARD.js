@@ -38,6 +38,7 @@ class Card {
         svgObj["setInfo"] = this.drawSetInfo(set, rarity);
         svgObj["bottomBar"] = svgData.bottomBar;
         svgObj["topRect"] = svgData.topRect;
+        svgObj["bottomBack"] = svgData.bottomBack;
 
         return svgObj;
     }
