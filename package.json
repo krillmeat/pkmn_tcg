@@ -7,7 +7,7 @@
     "test": "mocha",
     "sass": "sass --watch SCSS:CSS --style compressed --no-source-map",
     "build": "nodemon app.js",
-    "ftp": "git ftp init -u 'rossdani' -P 'ftp.rossdanielconover.com/public_html/pkmn_tcg'"
+    "ftp": "git ftp push"
   },
   "repository": {
     "type": "git",
