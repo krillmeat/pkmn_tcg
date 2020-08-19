@@ -56,7 +56,7 @@ function toggleSetFilter(e){
     if(!runningDraw){
         if(selectedSet == "all"){
             if(setFilters.length != 4){
-                setFilters = ["rg","gs","rs","dp","xy","eg"];
+                setFilters = ["rg","gs","rs","dp","xy","ss","eg"];
                 e.currentTarget.dataset.status = "selected";
                 createCardList();
             } else{
@@ -113,6 +113,8 @@ function createCardList(){
                 if(typeFilters.includes(setData[key].types[0]) || typeFilters.includes(setData[key].types[1])){
                     cardList.push(setData[key]);
                 }
+            } else if(setData[key] instanceof TRAINER && cardTypeFilters.includes("trainer")) {
+                cardList.push(setData[key]);
             } else{
                 if(typeFilters.includes(setData[key].type)){
                     cardList.push(setData[key]);

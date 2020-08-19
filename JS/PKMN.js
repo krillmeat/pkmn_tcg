@@ -14,6 +14,7 @@ class PKMN extends Card{
         this.isSpecial = (special !== undefined && special !== null && special !== "");
         this.isGmax = (this.isSpecial && special.toLowerCase() == "gmax");
         this.isMega = (this.isSpecial && special.toLowerCase() == "mega");
+        this.isEX = this.isGmax || this.isMega || this.special === "hundredPercent";
 
         this.baseParts = this.drawBaseParts(this.set, this.rarity);
 
@@ -34,7 +35,7 @@ class PKMN extends Card{
 
         let bottom = this.drawBottom(this.baseParts.setInfo, this.types, this.retreatCost);
         let top = this.drawTop(this.pkmnName, this.types, this.hp, this.stage, this.special);
-        let cardClasses = this.isSpecial ? "CARD PKMN SPEC" : "CARD PKMN";
+        let cardClasses = this.isEX ? "CARD PKMN SPEC" : "CARD PKMN";
         let body = this.drawBody(this.skills);
         let overlays = this.drawOverlays(this.types, this.skills);
 

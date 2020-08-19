@@ -15,3 +15,33 @@ const getAllIndex = (char, string) => {
     while((i=string.indexOf(char,i+1)) >= 0) a.push(i);
     return a;
 };
+
+const downloader = (data, filename, type) => {
+    var file = new Blob([data],{type: type});
+    
+    var a = document.createElement("a");
+    var url = URL.createObjectURL(file);
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function(){
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+    }, 0);
+}
+
+const createIMG = node => {
+    var canvas = node;
+    var img = canvas.toDataURL("image/jpg");
+
+    return img;
+}
+
+const ttsRender = () => {
+    let linkElem = document.createElement("link");
+    linkElem.rel = 'stylesheet';
+    linkElem.href = "CSS/tss_out.css";
+
+    document.getElementsByTagName('head')[0].appendChild(linkElem);
+}

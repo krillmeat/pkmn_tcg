@@ -39,10 +39,18 @@ const cardData = {
         gCharizard: new PKMN("Charizard",150,["fire","flying"],["gmax","charizard"],2,"gmax",
                             [new ABILITY("GMAX WILDFIRE","All [{fire}# Energy] attached to this [PKMN] count as [{fire}2][{fire}# Energy].")]
                             ,"RG","S"),
+        vulpix: new PKMN("Vulpix",60,["fire"],["basic"],1,null,
+        [new ATTACK("fire",["fire"],"0","Call for Family","Search your [DECK] for a [{fire}#] [{fire}PKMN] and put it into your [HAND]."),
+        new ATTACK("fire",["fire","normal"],"20","Fire Fang", "Put a [{fire}brn token] on the [defending] [PKMN].")]
+        ,"RG","C"),
+        ninetales: new PKMN("Ninetales",90,["fire"],["stage 1","vulpix"],2,null,
+        [new ABILITY("Roast Reveal","Once per turn, you may discard a [{fire}# ENERGY] from your hand% in order to draw [2] cards from your [deck]."),
+        new ATTACK("fire",["fire","fire","normal"],"50","Roasting Heat", "Put a [{fire}BRN TOKEN] on [1] of your [opponent]'[s] [PKMN].")]
+        ,"RG","R"),
         flareon: new PKMN("Flareon",80,["fire"],["stage 1","eevee"],1,null,
-                            [new ABILITY("Flame Guard","Your [PKMN] are not affected by being [{fire}BRND]."),
-                            new ATTACK("fire",["fire"],"10x","Blaze Strike","Does [{dmg}10] [{dmg}dmg] for each [{fire}BRND] [PKMN] in play.")],
-                            "RG","R"),
+        [new ABILITY("Flame Guard","Your [PKMN] are not affected by being [{fire}BRND]."),
+        new ATTACK("fire",["fire"],"10x","Blaze Strike","Does [{dmg}10] [{dmg}dmg] for each [{fire}BRND] [PKMN] in play.")],
+        "RG","R"),
         blastoise: new PKMN("Blastoise",120,["water"],["stage 2","wartortle"],4,null,
         [new ABILITY("Rain Dance","You may attach any number of [{water}basic # energy] from your% [hand] to your [{water}#] [{water}PKMN] in any way you like."),
             new ATTACK("water",["water","water","normal"],"20+","Hydro Pump", "Does [{dmg}10] more [{dmg}dmg] for each [{water}# energy] attached to this [PKMN].")]
@@ -53,6 +61,14 @@ const cardData = {
         gBlastoise: new PKMN("Blastoise",160,["water"],["gmax","blastoise"],4,"gmax",
         [new ABILITY("GMAX CANNONADE","When you play this [PKMN] from your [hand] to [evolve] [1] of your% [PKMN], you may attach any number of [{water}basic # energy] from% your [discard] to this [PKMN]. Then, switch this [PKMN] with your% [Active] [PKMN].")]
         ,"RG","S"),
+        vaporeon: new PKMN("Vaporeon",90,["water"],["stage 1","eevee"],1,null,
+        [new ABILITY("Aqua Refresh","Whenever you attach a [{water}# energy] from your hand to [1] of% your [PKMN], heal [{dmg}20] [{dmg}dmg] from that [PKMN]. This [ability] may only% be used an a [PKMN] once per turn."),
+        new ATTACK("water",["water"],"10+","Splashing Wave","Does [{dmg}10] more [{dmg}dmg] for each of your [PKMN] with any [{water}# energy]% attached to them.")],
+        "RG","R"),
+        jolteon: new PKMN("Jolteon",80,["electric"],["stage 1","eevee"],1,null,
+        [new ABILITY("Zap Dash","Your [PKMN] with any [{electric}# ENERGY] pay [2] less to [retreat]."),
+        new ATTACK("electric",["electric"],"40","Charge Strike","Deal  [{dmg}10] [{dmg}dmg] to this [PKMN].")],
+        "RG","R"),
         nidoking: new PKMN("Nidoking",100,["poison","ground"],["stage 2","nidorino"],4,null,
         [ new ATTACK("poison",["poison","poison"],"30","Sludge Wave","Put [{poison} 2] [{poison}psn tokens] on your [opponent]'[s] [PKMN] in any% way you like."),
         new ATTACK("poison",["poison","ground","normal","normal"],"60","Toxic Quake","Deal [{dmg}10] [{dmg}dmg] to each of your [opponent]'[s benched] [PKMN]% for each [{poison}psn token] on the [defending] [PKMN].")],
@@ -60,7 +76,28 @@ const cardData = {
         eevee: new PKMN("Eevee",50,["normal"],["basic"],1,null,
                             [new ABILITY("Energy Evolution","When you attach an [energy] from your [hand] to this [PKMN],% you may search your [deck] for a [PKMN] that [evolves] from% this [PKMN] that is the same [TYPE] as that [energy] and use it% to [evolve] this [PKMN]."),
                             new ATTACK("normal",["normal"],"0","Fetch","Draw [2] [Cards].")],
-                            "RG","C")
+                            "RG","C"),
+        green: new SUPPORTER("Green",new SKILL("effect","Discard up to [2] [PKMN] from your [HAND] and [draw] [3] [cards]% for each [PKMN] you discarded."),"RG","U"),
+        pkmnNurse: new SUPPORTER("PKMN Nurse",new SKILL("effect","Search your [deck] for up to [2] [{heal}healing] [items] and put them% into your [hand]."),"RG","U"),
+        professorOak: new SUPPORTER("Professor Oak",new SKILL("effect","Discard your [hand] and draw [7] cards."),"RG","U"),
+        red: new SUPPORTER("Red",new SKILL("effect","Shuffle your [hand] into your [deck] and draw [6] cards."),"RG","U"),
+        bicycle: new ITEM(null,"Bicycle",new SKILL("effect","Draw [cards] until you have [4] [cards] in your [hand]."),"RG","C"),
+        escapeRope: new ITEM(null,"Escape Rope",new SKILL("effect","Switch your [active] [PKMN] with [1] of your [benched] [PKMN]."),"RG","C"),
+        ether: new ITEM(null,"Ether",new SKILL("effect","Put [2] [basic energy] from your [discard] into your [hand]."),"RG","C"),
+        fullHeal: new ITEM("heal","Full Heal",new SKILL("effect","Remove all [spec condition tokens] from [1] of your [PKMN]."),"RG","C"),
+        fullRestore: new ACESPEC("heal","Full Restore",new SKILL("effect"," [{heal}heal] [{dmg}all dmg] and remove all [special condition]% [tokens] from [1] of your [PKMN]."),"RG","R"),
+        hyperPotion: new ITEM("heal","Hyper Potion",new SKILL("effect","Discard any number of [energy] from [1] of your [PKMN]. Then,% [{heal}heal] [{dmg}20] [{dmg}dmg] from that [PKMN] for each [energy discarded]."),"RG","U"),
+        masterBall: new ACESPEC("ball","Master Ball",new SKILL("effect","Search your [deck] for a [PKMN] and put it into your [hand]."),"RG","R"),
+        maxEther: new ACESPEC(null,"Max Ether",new SKILL("effect","Put [4] [basic energy] from your [discard] into your [hand].% Then, shuffle [2] [special energy] from your [discard] into% your [deck]."),"RG","R"),
+        maxPotion: new ITEM("heal","Max Potion",new SKILL("effect"," [{heal}hea] [{dmg}all dmg] from [1] of your [PKMN]. Then, [discard all]% [energy] attached to that [PKMN]."),"RG","U"),
+        nugget: new ITEM(null,"Nugget",new SKILL("effect","Whenever you draw this [item] from your [deck], immeidately% [discard] it and draw [2] cards."),"RG","U"),
+        pkmnComputer: new ACESPEC(null,"PKMN Computer",new SKILL("effect","Discard [2] cards from your [hand]. Then, search your [deck] for% any card, and put it into your [hand]."),"RG","R"),
+        pokeBall: new ITEM("ball","Poke Ball",new SKILL("effect","Put a [PKMN] from your hand into your [deck]. Then, search your% [deck] for a [PKMN] and put it into your [HAND]."),"RG","C"),
+        potion: new ITEM("heal","Potion",new SKILL("effect"," [{heal}heal] [{dmg}20] [{dmg}dmg] from [1] of your [PKMN]."),"RG","C"),
+        rareCandy: new ITEM(null,"Rare Candy",new SKILL("effect","Choose [1] of your [basic] [PKMN] in play. If you have a [stage 2] [PKMN]% in your [hand] that [evolves] from that [PKMN], put that [PKMN] on% the [basic] [PKMN] to [evolve] it. You can't use this [item] on your% first turn or on a [basic] [PKMN] that was put into play this turn."),"RG","U"),
+        superPotion: new ITEM("heal","Super Potion",new SKILL("effect","Discard an [energy] attached to [1] of your [PKMN]. Then, [{heal}heal]% [{dmg}50] [{dmg}dmg] from that [PKMN]."),"RG","U"),
+        xAccuracy: new ITEM(null,"X Accuracy",new SKILL("effect","During this turn, when you [attack], if the effect of an% [attack] requires any number of [coin flips], you may chose% to have the first [coin flip] be [heads]."),"RG","U"),
+        xSpecial: new ITEM(null,"X Special",new SKILL("effect","Choose [1] of your [PKMN] that has any [basic energy] attached.% Choose up to [2] [basic energy] attached to taht [PKMN] and put% them into your [deck]. Then, for each [energy] you returned in% this way, you may search your [deck] for a [basic energy], and% attach it to that [PKMN]."),"RG","U")
     },
 
     gs: {
@@ -71,6 +108,10 @@ const cardData = {
                             [new ABILITY("Energy Trans","You may move any number of [{grass}# energy] from [1] of your% [{grass}#] [{grass}PKMN] to another one of your [{grass}#] [{grass}PKMN]."),
                             new ATTACK("grass",["grass","grass","normal"],"70","Giant Bloom","Heal [{dmg}20] [{dmg}dmg] from this [PKMN].")]
                             ,"GS","R"),
+        mantine: new PKMN("Mantine",80,["water","flying"],["basic"],0,null,
+        [new ATTACK("water",["normal"],"0","Fluttering Splash","Search your [deck] for [{water}2] [{water}basic # energy] and put them into% your hand."),
+        new ATTACK("water",["water","water"],"30","Diving Strike","Deal [{dmg}10] [{dmg}dmg] to [1] of your [opponent]'[s benched] [PKMN].")]
+        ,"GS","U"),
         larvitar:   new PKMN("Larvitar",50,["rock","ground"],["basic"],1,null,
                             [new ATTACK("rock",["normal"],"0","Mountain Eater"," [Discard] the top card of your [OPPONENT]'[S DECK].")]
                             ,"GS","C"),
@@ -84,7 +125,12 @@ const cardData = {
                             ,"GS","R"),
         mTyranitar: new PKMN("Tyranitar",160,["rock","dark"],["mega","tyranitar"],4,"mega",
         [new ABILITY("Shell Evolution","The [attacks] of your [{rock}] and [{dark}] [PKMN] deal [{dmg}20] more [{dmg}dmg] to% a [defending] [PKMN] that has already taken [{dmg}dmg].")]
-                            ,"GS","S")
+                            ,"GS","S"),
+        gold: new SUPPORTER("Gold",new SKILL("effect","Discard an [energy] from your [hand]. Then, draw [4] cards."),"GS","U"),
+        kurt: new SUPPORTER("Kurt",new SKILL("effect","Search your [deck] for up to [3] [ball items] and put them% into your [hand]."),"GS","U"),
+        professorElm: new SUPPORTER("Professor Elm",new SKILL("effect","Shuffle your [hand] into your [deck] and [draw] a card for% each [evolved] [PKMN] in play."),"GS","U"),
+        silver: new SUPPORTER("Silver",new SKILL("effect","Switch your [active] [PKMN] with [1] of your [benched] [PKMN]. Then,% switch your [opponent]'[s] [active] [PKMN] with [1] of their% [benched] [PKMN]."),"GS","U"),
+        heavyBall: new ITEM("ball","Heavy Ball",new SKILL("effect","Search your [deck] for a [PKMN] with [3] or higher [retreat cost]% and put it into your [hand]."),"GS","U")
     },
 
     rs: {
@@ -104,7 +150,7 @@ const cardData = {
                             ,"RG","S"),
         roselia: new PKMN("Roselia",50,["grass","poison"],["basic"],1,null,
                             [new ATTACK("grass",["normal"],"0","Sweet Scent"," [heal] [{dmg}20] [{dmg}dmg] from one of your [{grass}#] or [{poison}#] [PKMN]."),
-                            new ATTACK("poison",["normal"],"0","Sweet Scent"," [heal] [{dmg}20] [{dmg}dmg] from one of your [{grass}#] or [{poison}#] [PKMN].")]
+                            new ATTACK("poison",["poison","normal"],"20","Poison Barb","Put a [{poison}PSN TOKEN] on the [Defending] [PKMN].")]
                             ,"RS","C"),
         swampert: new PKMN("Swampert",110,["water","ground"],["stage 2","marshtomp"],3,null,
         [new ABILITY("Energy Flood"," [discard] a [{water}# energy] from your [hand] to attach [{ground}2] [{ground}basic]% [{ground}# energy] from your [hand] to [1] of your [{water}#] or [{ground}#] [PKMN]."),
@@ -124,6 +170,8 @@ const cardData = {
         [new ABILITY("DNA Splice","Once per turn, you may [discard] a [{psychic}basic # energy]% from your [hand] to change this [PKMN][s] [ability] to another [1]% of your [{psychic}#] [{psychic}PKMN][{psychic}s] [abilities] for this turn."),
         new ATTACK("psychic",["psychic","normal"],"30+","Psychic","Does [{dmg}10] more [{dmg}dmg] for each [energy] attached to the% [defending] [PKMN].")]
         ,"RS","R"),
+        wally: new SUPPORTER("Wally",new SKILL("effect","Search your [deck] for a [PKMN] that [evolves] from [1] of your [PKMN]% in play and put it onto that [PKMN]. You can use this [supporter]% during your first turn or on a [PKMN] that was put into play this turn."),"RS","U"),
+        vsSeeker: new ACESPEC(null,"VS Seeker",new SKILL("effect","Search your [discard] for a [supporter] and use its effect% as the effect of this [item]. This does not count as your% [supporter] for the turn."),"RS","R")
     },
 
     dp: {
@@ -133,11 +181,19 @@ const cardData = {
         roserade: new PKMN("Roserade",70,["grass","poison"],["stage 1","roselia"],2,null,
                             [new ABILITY("POLLEN FEVER","When you attach a [{grass}# energy] from your [hand] to this [PKMN],% you may put a [{psychic}CONF TOKEN] on the [DEFENDING] [PKMN]. When% you attach a [{poison}# ENERGY] from your [HAND] to this [PKMN], you% may put a [{poison}psn token] on the [defending] [PKMN]."),
                              new ATTACK("grass",["grass","normal"],"30","Long Whip", "If the [defending] [PKMN] is [{poison}PSND], deal [{dmg}20] [{dmg}dmg] to [1] of your% [OPPONENT]'[s] [benched] [PKMN].")]
-                            ,"DP","U")
+                            ,"DP","U"),
+        riolu: new PKMN("Riolu",50,["fighting"],["baby","lucario"],1,null,
+        [new ABILITY("Punching Up","This [PKMN] deals [{dmg}20] more [{dmg}dmg] to [evolved] [PKMN] (including% [Mega] and [Gmax] [PKMN])."),
+        new ATTACK("fighting",["normal"],"10+","Low Kick","If the [defending] [PKMN] has [3] or more [retreat cost], this% [attack] deals [{dmg}20] more [{dmg}dmg].")],
+        "DP","C"),
+        dawn: new SUPPORTER("Dawn",new SKILL("effect","Search your [deck] for a [trainer] and put it into your [hand]."),"DP","U"),
+        professorRowan: new SUPPORTER("Professor Rowan",new SKILL("effect","Choose [1] card from your [hand]. Then, shuffle the remaining% cards into your [deck] and draw [4] cards."),"DP","U")
+        
     },
 
     bw: {
-
+        n: new SUPPORTER("N",new SKILL("effect","Each player shuffles their [hand] into their [deck] and draws% a card for each of their remaining [prizes]."),"BW","U"),
+        professorJuniper: new SUPPORTER("Prof. Juniper",new SKILL("effect","Search your [deck] for up to [2] in any combination of [basic]% [energy] and [basic] [PKMN] and put them into your [hand]."),"BW","U")
     },
 
 
@@ -162,14 +218,21 @@ const cardData = {
         [new ABILITY("Cell Birth","If this card is in your [hand], you may [discard] [4]% [Zygarde C] to play this [PKMN] on your [bench]. You may% not put this [PKMN] into play any other way."),
          new ATTACK("dragon",["dragon","dragon","ground","normal"],"30x","Cell Storm", "This [attack] does [{dmg}30] [{dmg}dmg] for each [zygarde] in play.")]
         ,"XY","S"),
+        professorSycamore: new SUPPORTER("Prof. Sycamore",new SKILL("effect","If you do not have a [mega] [PKMN] in play, search your [deck] for% a [mega] [PKMN] that [evolves] from [1] of your [PKMN] and put it onto% that [PKMN]. You can use this [supporter] on a [PKMN] that was put% into play this turn (but not if it is your first turn)."),"XY","U")
     },
 
     sm: {
-
+        professorKukui: new SUPPORTER("Professor Kukui",new SKILL("effect","Draw [2] cards. During this turn, your [PKMN]s [attacks] do [{dmg}20]% more [{dmg}dmg] to the [defending] [PKMN]."),"SM","U")
     },
 
     ss: {
-
+        hatterene: new PKMN("Hatterene", 110, ["psychic","fairy"],["stage 2","hattrem"],3,null,
+        [new ABILITY("Silent Drain","This [PKMN] may use the [energy] attached to the [defending]% [PKMN] to pay for its [attacks]."),
+        new ATTACK("fairy",["fairy","psychic","normal","normal"],"30x","Magic Powder","This [attack] does [{dmg}30] [{dmg}dmg] for each unique [energy type]% used to pay for this [attack] (max [{dmg}150] [{dmg}dmg]).")]
+        ,"SS","R"),
+        gHatterene: new PKMN("Hatterene", 150, ["psychic","fairy"],["gmax","hatterene"],4,"gmax",
+        [new ABILITY("GMAX Smite", "???.")],
+        "SS","S")
     },
 
     eg: {

@@ -8,14 +8,14 @@ class SKILL {
     }
 
     drawSkill = () => {
-        let svg = "HI THERE";
+        let svg = "";
 
         svg = this.drawDesc(this.desc);
 
         return svg;
     }
 
-    /*
+    /**
      * DRAW TOP
      * ----------------------------
      * Draws the Skill Top. A Skill, by default, should return no Top.
@@ -25,7 +25,7 @@ class SKILL {
      */
     drawTop = () => {}
 
-    /*
+    /**
      * DRAW DESC
      * ----------------------------
      * Draws the Description Area of the Skill.
@@ -53,7 +53,7 @@ class SKILL {
         return svg;
     }
 
-    /*
+    /**
      * CONVERT LINE
      * ----------------------------
      * Takes a line of the Description and converts the Special Characters and labels
@@ -130,7 +130,7 @@ class SKILL {
         return svg;
     }
 
-    /*
+    /**
      * CREATE LINE BREAKS
      * ----------------------------
      * Takes a Description and breaks it into an Array of Strings
@@ -158,7 +158,7 @@ class SKILL {
         return a;
     }
 
-     /*
+     /**
      * CALCULATE HEIGHT
      * ----------------------------
      * Gets the Total Height of the Skill

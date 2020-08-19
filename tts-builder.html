@@ -1,0 +1,51 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="FONTS/icon-font/style.css" rel="stylesheet">
+
+<link href="CSS/reset.css" rel="stylesheet">
+<link href="CSS/page.css" rel="stylesheet">
+<link href="CSS/card.css" rel="stylesheet">
+<link href="CSS/tss_out.css" rel="stylesheet">
+
+</head>
+
+<body> 
+
+    <div id="card-body"><!-- JS DRAW ZONE --></div>
+
+    <script type="text/javascript" src="JS/utils.js"></script>
+
+    <script type="text/javascript" src="DB/svg-db.js"></script>
+    <script type="text/javascript" src="DB/types-db.js"></script>
+
+    <!-- CLASSES -->
+    <script type="text/javascript" src="JS/SKILL.js"></script>
+    <script type="text/javascript" src="JS/ABILITY.js"></script>
+    <script type="text/javascript" src="JS/ATTACK.js"></script>
+    <script type="text/javascript" src="JS/CARD.js"></script>
+    <script type="text/javascript" src="JS/PKMN.js"></script>
+    <script type="text/javascript" src="JS/ENERGY.js"></script>
+
+    <script type="text/javascript" src="DB/cards-db.js"></script>
+
+    <script type="text/javascript">
+    
+    let rg = cardData.rg;
+
+    let cardBody = document.getElementById("card-body");
+
+      for(var key of Object.keys(rg)){
+        rg[key].drawCard(cardBody);
+      }
+
+    
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+#card-body{
+    transform: scale(1.75);
+}
+
+.card{
+    height: 252px !important;
+    margin: 0px !important;
+}
+
+.card svg{
+    border: none !important;
+    border-radius: 0px !important;
+}

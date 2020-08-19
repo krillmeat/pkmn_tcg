@@ -1,11 +1,5 @@
 @use '../SCSS/var';
 
-#card-body{
-
-    .card{
-        margin: 4px;
-    }
-
     svg.CARD{
         width: 180px;
         height: 252px;
@@ -111,7 +105,8 @@
             }
         }
 
-        &.PKMN{
+        &.PKMN,
+        &.TRAINER{
             .BACKGROUND{ fill: #606060 }
             .TOP{
                 .TOP_RECT{ @include var.white-all }
@@ -254,6 +249,157 @@
                         font-family: var.$nexa;
                         fill: var.$dark;
                         font-size: 5px;
+                    }
+                }
+
+                .TRAINER_NOTE{
+                    rect{
+                        fill: #5090D6;
+                        stroke: #5090D6;
+                        stroke-width: .5;
+                    }
+                    text{
+                        font-family: var.$montserrat;
+                        fill: var.$white;
+                        font-size: 4.5px;
+                    }
+                }
+
+                .SUPPORTER_NOTE{
+                    rect{
+                        fill: #ED7720;
+                        stroke: #ED7720;
+                        stroke-width: .5;
+                    }
+                    text{
+                        font-family: var.$montserrat;
+                        fill: var.$white;
+                        font-size: 4.5px;
+                    } 
+                }
+            }
+        }
+
+        &.TRAINER{
+            .BACKGROUND{ fill: #606060 }
+            .TOP{
+                .TOP_RECT{ @include var.w-w-s }
+                .TRAINER_ICON{
+                    path{
+                        fill: #5090D6;
+                        stroke: none;
+                    }
+
+                    &.ACESPEC{
+                        path{
+                            fill: var.$red;
+                        }
+                    }
+
+                    &.SUPPORTER{
+                        path{ fill: #ED7720 }
+                    }
+                }
+
+                .SUB_TOP{
+                    text{
+                        font-family: var.$nexa;
+                        font-size: 5px;
+                        letter-spacing: .5px;
+                    }
+                    .TRAINER_LABEL{
+                        rect{
+                            @include var.d-d-s;
+                        }
+
+                        text{ fill: var.$white; font-size: 4.5px }
+                    }
+
+                    .ACE_SPEC_LABEL{
+                        rect{
+                            fill: var.$red;
+                            stroke: var.$red;
+                            stroke-width: .5;
+                        }
+
+                        polygon{ fill: var.$white; }
+
+                        text{
+                            fill: var.$white;
+                        }
+                    }
+
+                    .ITEM_TYPE_SUB_LABEL{
+                        text{ fill: var.$white; font-size: 4.5px }
+                        &.HEALING{
+                            & > rect{
+                                fill: var.$heal;
+                                stroke: var.$heal;
+                                stroke-width: .5;
+                            }
+                        }
+
+                        &.BALL{
+                            & > rect{
+                                fill: #5090D6;
+                                stroke: #5090D6;
+                                stroke-width: .5;
+                            }
+                        }
+
+                        .ITEM_TYPE_ICON{
+                            *:not(g){ fill: var.$white }       
+                        }
+                    }
+
+                    .ITEM_SUB_LABEL_POLY{
+                        polygon:first-of-type{
+                            fill: #5090D6;
+                            stroke: #5090D6;
+                            stroke-width: .5;
+                        }
+
+                        polygon:last-of-type{
+                            @include var.w-w-s;
+                        }
+                    }
+                    
+                    .SUPPORTER_SUB_LABEL_POLY{
+                        polygon:first-of-type{
+                            fill: #ED7720;
+                            stroke: #ED7720;
+                            stroke-width: .5;
+                        }
+
+                        polygon:last-of-type{
+                            @include var.w-w-s;
+                        }
+                    }
+
+                    .TRAINER_TYPE_ICON{
+                        *:not(g){
+                            fill: var.$white;
+                            stroke: none;
+                        }
+                    }
+                } // SUB_TOP
+            }
+            .BODY{
+                .ACE_SPEC_NOTE{
+                    rect{
+                        fill: var.$red;
+                        stroke: var.$red;
+                        stroke-width: .5;
+                    }
+
+                    text{
+                        font-family: var.$montserrat;
+                        font-size: 4px;
+                        fill: var.$white;
+
+                        tspan{
+                            font-family: var.$nexa;
+                        }
                     }
                 }
             }
@@ -430,4 +576,3 @@
             }
         }
     } /* CARD SVG */
-}
