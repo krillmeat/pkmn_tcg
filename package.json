@@ -7,7 +7,7 @@
     "test": "mocha",
     "sass": "sass --watch SCSS:CSS --style compressed --no-source-map",
     "build": "nodemon app.js",
-    "ftp": "git ftp push"
+    "ftp": "git ftp push -P"
   },
   "repository": {
     "type": "git",
