@@ -1,5 +1,21 @@
+@use '../SCSS/var';
+
 body{
     display: block;
     font-size: 16px;
-    *{box-sizing: border-box;}
+    background-color: var.$dark;
+}
+
+#card-body{
+    display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    width: 50%;
+    margin: 100px 0 50px 0;
+    transform: scale(2);
+        transform-origin: 0 0 0;
+    box-sizing: border-box;
+
+    .card{ margin: 4px }
 }

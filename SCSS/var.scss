@@ -1,0 +1,250 @@
+@font-face{
+    font-family: 'NexaRustSans-Black';
+    src: url('../FONTS/NexaRustSans-Black.otf')
+}
+
+$montserrat: 'Montserrat';
+
+$nexa: 'NexaRustSans-Black';
+
+$white: #FFF;
+$dark: #1C1C3A;
+$red: #D11515;
+$heal: #539B46;
+
+$grass: #539B46;
+$fire: #FF9D55;
+$water: #5090D6;
+$electric: #DFBC21;
+$psychic: #FA7179;
+$fighting: #CE416B;
+$rock: #C5B78C;
+$ground: #D97845;
+$poison: #AA6BC8;
+$bug: #91C12F;
+$ice: #73CEC0;
+$ghost: #5269AD;
+$flying: #8FA9DE;
+$dragon: #086DC5;
+$darkType: #5A5465;
+$steel: #5A8EA2;
+$fairy: #EC8FE6;
+$normal: #919AA2;
+
+.fill-white,.f-w{fill:$white}
+.fill-dark,.f-d{fill:$dark}
+.stroke-white,.s-w{stroke:$white}
+.stroke-dark,.s-d{stroke:$dark}
+.stroked{stroke-width:.5}
+
+tspan.ICON{
+    font-family: "icon-font";
+    font-size: 11px;
+    transform: translateY(1px);
+
+    &.HEAVY{font-weight: 700; font-size: 10px;}
+}
+
+@mixin w-w-s{
+    fill: $white;
+    stroke: $white;
+    stroke-width: .5;
+}
+
+@mixin d-d-s{
+    fill: $dark;
+    stroke: $dark;
+    stroke-width: .5;
+}
+
+@mixin r-r-s{
+    fill: $red;
+    stroke: $red;
+    stroke-width: .5;
+}
+
+@mixin white-all{
+    fill: $white;
+    stroke: $white;
+    stroke-width: .5;
+}
+
+@mixin grass-all{
+    fill: $grass;
+    stroke: $grass;
+    stroke-width: .5;
+}
+
+@mixin grass-fill{
+    fill: $grass;
+}
+
+@mixin fire-all{
+    fill: $fire;
+    stroke: $fire;
+    stroke-width: .5;
+}
+
+@mixin fire-fill{
+    fill: $fire;
+}
+
+@mixin water-all{
+    fill: $water;
+    stroke: $water;
+    stroke-width: .5;
+}
+
+@mixin water-fill{
+    fill: $water;
+}
+
+@mixin electric-all{
+    fill: $electric;
+    stroke: $electric;
+    stroke-width: .5;
+}
+
+@mixin electric-fill{
+    fill: $electric;
+}
+
+@mixin psychic-all{
+    fill: $psychic;
+    stroke: $psychic;
+    stroke-width: .5;
+}
+
+@mixin psychic-fill{
+    fill: $psychic;
+}
+
+@mixin fighting-all{
+    fill: $fighting;
+    stroke: $fighting;
+    stroke-width: .5;
+}
+
+@mixin fighting-fill{
+    fill: $fighting;
+}
+
+@mixin rock-all{
+    fill: $rock;
+    stroke: $rock;
+    stroke-width: .5;
+}
+
+@mixin rock-fill{
+    fill: $rock;
+}
+
+@mixin ground-all{
+    fill: $ground;
+    stroke: $ground;
+    stroke-width: .5;
+}
+
+@mixin ground-fill{
+    fill: $ground;
+}
+
+@mixin poison-all{
+    fill: $poison;
+    stroke: $poison;
+    stroke-width: .5;
+}
+
+@mixin poison-fill{
+    fill: $poison;
+}
+
+@mixin bug-all{
+    fill: $bug;
+    stroke: $bug;
+    stroke-width: .5;
+}
+
+@mixin bug-fill{
+    fill: $bug;
+}
+
+@mixin ice-all{
+    fill: $ice;
+    stroke: $ice;
+    stroke-width: .5;
+}
+
+@mixin ice-fill{
+    fill: $ice;
+}
+
+@mixin ghost-all{
+    fill: $ghost;
+    stroke: $ghost;
+    stroke-width: .5;
+}
+
+@mixin ghost-fill{
+    fill: $ghost;
+}
+
+@mixin flying-all{
+    fill: $flying;
+    stroke: $flying;
+    stroke-width: .5;
+}
+
+@mixin flying-fill{
+    fill: $flying;
+}
+
+@mixin dragon-all{
+    fill: $dragon;
+    stroke: $dragon;
+    stroke-width: .5;
+}
+
+@mixin dragon-fill{
+    fill: $dragon;
+}
+
+@mixin dark-all{
+    fill: $darkType;
+    stroke: $darkType;
+    stroke-width: .5;
+}
+
+@mixin dark-fill{
+    fill: $darkType;
+}
+
+@mixin steel-all{
+    fill: $steel;
+    stroke: $steel;
+    stroke-width: .5;
+}
+
+@mixin steel-fill{
+    fill: $steel;
+}
+
+@mixin fairy-all{
+    fill: $fairy;
+    stroke: $fairy;
+    stroke-width: .5;
+}
+
+@mixin fairy-fill{
+    fill: $fairy;
+}
+
+@mixin normal-all{
+    fill: $normal;
+    stroke: $normal;
+    stroke-width: .5;
+}
+
+@mixin normal-fill{
+    fill: $normal;
+}

@@ -1,0 +1,578 @@
+@use '../SCSS/var';
+
+    svg.CARD{
+        width: 180px;
+        height: 252px;
+
+        border: 1px solid rgba(255,255,255,.25);
+            border-radius: 3px;
+
+        .GRASS{ @include var.grass-fill }
+        .GRASS-ALL{ @include var.grass-all }
+
+        .FIRE{ @include var.fire-fill }
+        .FIRE-ALL{ @include var.fire-all }
+
+        .WATER{ @include var.water-fill }
+        .WATER-ALL{ @include var.water-all }
+
+        .ELECTRIC{ @include var.electric-fill }
+        .ELECTRIC-ALL{ @include var.electric-all }
+
+        .PSYCHIC{ @include var.psychic-fill }
+        .PSYCHIC-ALL{ @include var.psychic-all }
+
+        .FIGHTING{ @include var.fighting-fill }
+        .FIGHTING-ALL{ @include var.fighting-all }
+
+        .ROCK{ @include var.rock-fill }
+        .ROCK-ALL{ @include var.rock-all }
+
+        .GROUND{ @include var.ground-fill }
+        .GROUND-ALL{ @include var.ground-all }
+
+        .POISON{ @include var.poison-fill }
+        .POISON-ALL{ @include var.poison-all }
+
+        .BUG{ @include var.bug-fill }
+        .BUG-ALL{ @include var.bug-all }
+
+        .ICE{ @include var.ice-fill }
+        .ICE-ALL{ @include var.ice-all }
+
+        .GHOST{ @include var.ghost-fill }
+        .GHOST-ALL{ @include var.ghost-all }
+
+        .FLYING{ @include var.flying-fill }
+        .FLYING-ALL{ @include var.flying-all }
+
+        .DRAGON{ @include var.dragon-fill }
+        .DRAGON-ALL{ @include var.dragon-all }
+
+        .DARK{ @include var.dark-fill }
+        .DARK-ALL{ @include var.dark-all }
+
+        .STEEL{ @include var.steel-fill }
+        .STEEL-ALL{ @include var.steel-all }
+
+        .FAIRY{ @include var.fairy-fill }
+        .FAIRY-ALL { @include var.fairy-all }
+
+        .NORMAL{ @include var.normal-fill }
+        .NORMAL-ALL { @include var.normal-all }
+
+        .INNER_BORDER{ @include var.w-w-s }
+        .OUTER_BORDER{ @include var.d-d-s }
+
+        .TOP {
+            text{ font-family: var.$nexa } 
+            .NAME text{
+                fill: var.$dark;
+                font-size: 12px;
+            }
+        }
+
+        .SKILL_DESCRIPTION{
+            
+            & > rect{ @include var.w-w-s }
+            
+            .DESC_TEXT{
+                text{
+                    fill: var.$dark;
+                    font-family: var.$montserrat;
+                    font-size: 5px;
+
+                    tspan{
+                        &.DESC_BOLD{
+                            font-family: var.$nexa;
+                            font-size: 5.25px;
+                        }
+
+                        &.NUMBER{ font-size: 6.5px }
+                        &.HEAL{ fill: var.$heal }
+                        &.DMG{ fill: var.$red }
+                    }
+                }
+            }
+        }
+
+        .OVERLAYS{
+            opacity: .25;
+            
+            polygon,
+            rect{
+                fill: var.$dark;
+            }
+        }
+
+        &.PKMN,
+        &.TRAINER{
+            .BACKGROUND{ fill: #606060 }
+            .TOP{
+                .TOP_RECT{ @include var.white-all }
+
+                .HP{
+                    .HP_SHAPES{
+                        polygon,rect{
+                            fill: var.$red;
+                        }
+                    }
+
+                    text{
+                        fill: var.$white;
+
+                        &.HP_NO{ font-size: 12px }
+                        &.MINI_HP{ font-size: 6px }
+                    }
+                }
+
+                .TYPE_BARS{
+                    .TYPE_BAR_ONE, .TYPE_BAR_TWO{
+                        .ICON_BLOCK{
+                            .ICON{ stroke-width: 0 }
+                        }
+                    }
+                }
+
+                .SPEC_ICON{
+                    .MEGA,
+                    .GMAX,
+                    .ONE_HUNDRED_PERCENT{ fill: var.$white }
+                }
+
+                .STAGE{
+                    rect, polygon{
+                        @include var.d-d-s
+                    }
+
+                    text{
+                        font-size: 4.5px;
+                        letter-spacing: .75px;
+                        fill: var.$white;
+                    }
+
+                    .STAGE_SUB text{ font-size: 3.5px; letter-spacing: .5px; }
+                }
+
+                .TYPE_BARS{
+                    .ICON_BLOCK{
+                        & > polygon{ stroke-width: 1 }
+                        .ICON *{fill: var.$white;}
+                    }
+
+                    .TEXT_BLOCK{
+                        polygon{ @include var.w-w-s }
+                        text{ font-size: 5px; fill: var.$dark }
+                    }
+                }
+            }
+
+            .SKILLS{
+                .SKILL{
+                    .ATTACK_TOP, .ABILITY_TOP{
+                        text{ 
+                            font-family: var.$nexa; 
+                            fill: var.$dark;
+                            font-size: 6px;
+                        }
+
+                        .NAME { 
+                            polygon{ @include var.w-w-s }
+                        }
+                    }
+
+                    &.ATTACK .ATTACK_TOP{ 
+                        
+                        .COST{
+                            .ATTACK_COST .COST_ICON{
+                                .COST_ICON_TYPE *{ fill: var.$white; stroke-width: 0 }
+                            }
+                        }
+
+                        .NAME{
+                            polygon{ @include var.w-w-s }
+                        }
+
+                        .DMG{
+                            path,
+                            text{ stroke-width: 0 }
+
+                            .SKILL_DMG_POLYGON{ @include var.w-w-s }
+                            .SKILL_DMG_TEXT{
+                                polygon{ fill: var.$dark; stroke-width: 0; }
+                            }
+
+                            .DMG_TYPE .DMG_ICON *:not(g){ fill: var.$white }
+
+                        }
+                    }
+
+                    &.ABILITY .ABILITY_LABEL{
+                        polygon{ @include var.r-r-s; stroke-width: 1px; }
+                        text{ fill: var.$white }
+                    }
+                }
+            }
+
+            .BOTTOM{
+                .BOTTOM_BAR{ @include var.w-w-s }
+                .BOTTOM_BACK{ fill: var.$dark;}
+
+                .SET_INFO{
+                    & > rect{ @include var.w-w-s }
+
+                    .RARITY{ 
+                        font-family: var.$nexa;
+                        font-size: 5.5px;
+                        fill: var.$dark;
+                    }
+
+                    .SET_NUMBER{
+                        font-family: var.$montserrat;
+                        font-size: 3.5px;
+                        fill: var.$dark;
+                    }
+                }
+
+                .RETREAT_COST{
+                    .RC_BACK { @include var.w-w-s }
+                    .RC_DIVIDE { fill: var.$dark }
+                    text{
+                        font-family: var.$nexa;
+                        font-size: 4px;
+                        fill: var.$dark;
+                    }
+                }
+
+                .TYPE_EFFECT{
+                    text{
+                        font-family: var.$nexa;
+                        fill: var.$dark;
+                        font-size: 5px;
+                    }
+                }
+
+                .TRAINER_NOTE{
+                    rect{
+                        fill: #5090D6;
+                        stroke: #5090D6;
+                        stroke-width: .5;
+                    }
+                    text{
+                        font-family: var.$montserrat;
+                        fill: var.$white;
+                        font-size: 4.5px;
+                    }
+                }
+
+                .SUPPORTER_NOTE{
+                    rect{
+                        fill: #ED7720;
+                        stroke: #ED7720;
+                        stroke-width: .5;
+                    }
+                    text{
+                        font-family: var.$montserrat;
+                        fill: var.$white;
+                        font-size: 4.5px;
+                    } 
+                }
+            }
+        }
+
+        &.TRAINER{
+            .BACKGROUND{ fill: #606060 }
+            .TOP{
+                .TOP_RECT{ @include var.w-w-s }
+                .TRAINER_ICON{
+                    path{
+                        fill: #5090D6;
+                        stroke: none;
+                    }
+
+                    &.ACESPEC{
+                        path{
+                            fill: var.$red;
+                        }
+                    }
+
+                    &.SUPPORTER{
+                        path{ fill: #ED7720 }
+                    }
+                }
+
+                .SUB_TOP{
+                    text{
+                        font-family: var.$nexa;
+                        font-size: 5px;
+                        letter-spacing: .5px;
+                    }
+                    .TRAINER_LABEL{
+                        rect{
+                            @include var.d-d-s;
+                        }
+
+                        text{ fill: var.$white; font-size: 4.5px }
+                    }
+
+                    .ACE_SPEC_LABEL{
+                        rect{
+                            fill: var.$red;
+                            stroke: var.$red;
+                            stroke-width: .5;
+                        }
+
+                        polygon{ fill: var.$white; }
+
+                        text{
+                            fill: var.$white;
+                        }
+                    }
+
+                    .ITEM_TYPE_SUB_LABEL{
+                        text{ fill: var.$white; font-size: 4.5px }
+                        &.HEALING{
+                            & > rect{
+                                fill: var.$heal;
+                                stroke: var.$heal;
+                                stroke-width: .5;
+                            }
+                        }
+
+                        &.BALL{
+                            & > rect{
+                                fill: #5090D6;
+                                stroke: #5090D6;
+                                stroke-width: .5;
+                            }
+                        }
+
+                        .ITEM_TYPE_ICON{
+                            *:not(g){ fill: var.$white }       
+                        }
+                    }
+
+                    .ITEM_SUB_LABEL_POLY{
+                        polygon:first-of-type{
+                            fill: #5090D6;
+                            stroke: #5090D6;
+                            stroke-width: .5;
+                        }
+
+                        polygon:last-of-type{
+                            @include var.w-w-s;
+                        }
+                    }
+                    
+                    .SUPPORTER_SUB_LABEL_POLY{
+                        polygon:first-of-type{
+                            fill: #ED7720;
+                            stroke: #ED7720;
+                            stroke-width: .5;
+                        }
+
+                        polygon:last-of-type{
+                            @include var.w-w-s;
+                        }
+                    }
+
+                    .TRAINER_TYPE_ICON{
+                        *:not(g){
+                            fill: var.$white;
+                            stroke: none;
+                        }
+                    }
+                } // SUB_TOP
+            }
+            .BODY{
+                .ACE_SPEC_NOTE{
+                    rect{
+                        fill: var.$red;
+                        stroke: var.$red;
+                        stroke-width: .5;
+                    }
+
+                    text{
+                        font-family: var.$montserrat;
+                        font-size: 4px;
+                        fill: var.$white;
+
+                        tspan{
+                            font-family: var.$nexa;
+                        }
+                    }
+                }
+            }
+        }
+
+
+        &.ENERGY{
+            .TOP {
+
+                .TOP_TYPE .TYPE{
+                    & > g { fill : var.$white }
+                }
+
+                .NAME text{ fill: var.$white }
+
+                .SUB_TOP{
+                    & > rect { @include var.w-w-s }
+                    text{
+                        font-family: var.$nexa;
+                        font-size: 5px;
+                        fill: var.$white;
+                    }
+                    .LEFT{
+                        .SUB_TYPE_ICON *:not(g){
+                            fill: var.$white;
+                        }
+                    }
+
+                    .RIGHT{
+                        rect{ @include var.d-d-s }
+                    }
+                }
+            }
+
+            &:not(.SPEC) .BODY{
+                .TYPE_ICON{
+                    fill: var.$white;
+                }
+            }
+
+            .BODY{
+                .SKILL_DESCRIPTION{
+                    rect{ @include var.d-d-s }
+                    text{ fill: var.$white }
+                }
+            }
+
+            .BOTTOM{
+                rect{ @include var.d-d-s }
+
+                text{
+                    font-family: var.$montserrat;
+                    fill: var.$white;
+                    font-size: 4.5px;
+
+                    tspan{
+                        &.BOLD{ font-family: var.$nexa; font-size: 4px }
+                        &.ICON{ font-family: "icon-font"; font-size: 9px }
+                    }
+                }
+            }
+        }
+
+        &.SPEC{
+
+            .INNER_BORDER{ @include var.d-d-s }
+            
+           .SKILLS{ 
+               .SKILL_DESCRIPTION{ 
+                    & > rect{ @include var.d-d-s }
+                   .DESC_TEXT text{fill:var.$white}
+               }
+           }
+
+            &.PKMN{
+
+                .TOP {
+                    .TOP_RECT{ @include var.d-d-s }
+
+                    .NAME text{ fill: var.$white }
+
+                    .TYPE_BARS{
+                        .TEXT_BLOCK{
+                            polygon{ @include var.d-d-s }
+                            text{ fill: var.$white }
+                        }
+                    }
+
+                    .DMG_BOOST{
+                        polygon{ @include var.r-r-s }
+                        text{
+                            fill: var.$white;
+                            font-size: 5.5px;
+                        }
+                        rect{ fill: var.$white }
+                    }
+                }
+
+                .SKILLS{
+                    .SKILL.ATTACK,
+                    .SKILL.ABILITY{
+                        .ABILITY_TOP,
+                        .ATTACK_TOP{
+                            .NAME{
+                                polygon{ @include var.d-d-s }
+                                text{ fill: var.$white }
+                            }
+
+                            .DMG{
+                                .SKILL_DMG_POLYGON{ @include var.d-d-s }
+                                .SKILL_DMG_TEXT{ 
+                                    text,
+                                    polygon{
+                                        fill: var.$white 
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .BOTTOM{ 
+                    .BOTTOM_BAR{ @include var.d-d-s } 
+                    .SET_INFO{ rect{ @include var.d-d-s } }
+                    .SET_ICON *:not(g){
+                        fill: var.$white;
+                    }
+                    .RARITY{
+                        fill: var.$white;
+                    }
+                    .SET_NUMBER{
+                        fill: var.$white;
+                    }
+    
+                    .TYPE_EFFECT{
+                        .WEAKNESS,
+                        .RESISTANCE{
+                                & > g > rect{ fill: var.$dark; }
+                                & > g > text {fill: var.$white; }
+                        }
+                    }
+    
+                    .RETREAT_COST{
+                        .RC_BACK{fill:var.$dark; stroke:var.$dark;}
+                        .RC path{fill:var.$white; stroke:var.$white}
+                        text{fill:var.$white;}
+                    }
+                }
+
+                .SPEC_RULE{
+                    rect{ @include var.r-r-s }
+                    text{
+                        font-family: var.$montserrat;
+                        fill: var.$white; font-size: 4px;
+    
+                        tspan.bold{
+                            font-family: var.$nexa;
+                        }
+    
+                        tspan.pkmn-icon{
+                            font-family: "icon-font";
+                            font-size: 8px;
+                        }
+                    }
+                }
+            }
+
+            &.ENERGY{
+                .TOP{
+                    .SUB_TOP{
+                        & > rect{ @include var.d-d-s }
+                    }
+                }
+            }
+        }
+    } /* CARD SVG */
