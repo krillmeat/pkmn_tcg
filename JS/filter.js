@@ -13,9 +13,23 @@ var currentFilters = [setFilters];
 
 var cardList = [];
 
+var filterButton = document.querySelector("button.filter-button");
+
 var runningDraw = false;
 
 function addListeners(){
+    filterButton.addEventListener("click",function () {
+        let filterContainer = document.querySelector(".filters");
+
+        if(filterContainer.dataset.status === 'inactive'){
+            filterContainer.dataset.status = "active";
+            filterContainer.style.height = filterContainer.querySelector(".filter-wrap").offsetHeight + "px";
+        } else{
+            filterContainer.dataset.status = "inactive";
+            filterContainer.style.height = "0px";
+        }
+            
+    });
     let cardTypeFilters = cardTypeGroup.querySelectorAll("li");
     for(cardTypeFilter of cardTypeFilters){
         cardTypeFilter.addEventListener("click", toggleCardTypeFilter);
