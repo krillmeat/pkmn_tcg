@@ -19,3 +19,35 @@ body{
 
     .card{ margin: 4px }
 }
+
+.empty-text{
+    color: #FFF;
+    font-family: var.$montserrat;
+    font-size: .8rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.main{
+    h1{
+        font-family: var.$nexa;
+        font-size: 1.25em;
+        display: flex;
+            align-items: center;
+        .pkmn-logo{
+            font-family: "icon-font";
+            font-size: 1.5em;
+            margin-right: 4px;
+            font-weight: 700;
+            transform: translateY(-7px);
+        }
+        .small{
+            font-family: var.$montserrat;
+            font-size: .8em;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-left: 4px;
+        }
+    }
+}

@@ -158,7 +158,6 @@ function drawCardList(){
             counter = 0;
             runningDraw = false;
             filterNav.classList.remove("running");
-            console.log("STOP DRAWING!");
             clearInterval(drawInterval);
         }
     },50);
