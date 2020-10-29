@@ -26,6 +26,15 @@
       display: flex;
       justify-content: space-between;
       padding: 8px;
+
+      .left{
+        display: flex;
+          align-items: center;
+
+        ul{
+          margin-left: 32px;
+        }
+      }
     }
 
     .filters{

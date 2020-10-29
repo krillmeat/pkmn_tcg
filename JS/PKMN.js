@@ -33,6 +33,8 @@ class PKMN extends Card{
     drawCard = elem => {
         let svg;
 
+        let artSpecMod = this.isEX ? this.special : '';
+        let art = `<image href='MEDIA/CARD_ART/PKMN/${artSpecMod + this.pkmnName}.jpg' width='178' x='5' y='10'/>`;
         let bottom = this.drawBottom(this.baseParts.setInfo, this.types, this.retreatCost);
         let top = this.drawTop(this.pkmnName, this.types, this.hp, this.stage, this.special);
         let cardClasses = this.isEX ? "CARD PKMN SPEC" : "CARD PKMN";
@@ -41,6 +43,7 @@ class PKMN extends Card{
 
         svg = `<svg class='${cardClasses}' ${svgData.baseSvg}>
                ${this.baseParts["background"]}
+               ${art}
                ${overlays}
                ${bottom}
                ${this.baseParts["inner"]}

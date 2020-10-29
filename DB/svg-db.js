@@ -65,6 +65,7 @@ const svgData = {
         poison: "&#xe90e",
         bug: "&#xe900",
         ice: "&#xe90a",
+        ghost: "&#xe908",
         flying: "&#xe907",
         dragon: "&#xe902",
         dark: "&#xe901",

@@ -10,6 +10,7 @@ const typeDb = {
         rock: [["grass","water","fighting","ground","steel"],["fire","poison","flying","normal"]],
         ground: [["grass","water","ice"],["electric","poison","rock"]],
         poison: [["psychic","ground"],["grass","fighting","poison","bug","fairy"]],
+        bug: [["fire"],["grass"]],
         ghost: [["ghost","dark"],["psychic","normal"]],
         ice: [["fire"],["water"]],
         flying: [["electric","rock","ice"],["grass","fighting","ground","bug"]],
