@@ -6,7 +6,7 @@ const typeDb = {
         water: [["grass","electric"],["fire","water","ice","steel"]],
         electric: [["ground"],["electric","flying","steel"]],
         psychic: [["bug","ghost","dark"],["psychic","fighting"]],
-        fighting: [["psychic"],[]],
+        fighting: [["psychic","flying","fairy"],["rock","bug","dark"]],
         rock: [["grass","water","fighting","ground","steel"],["fire","poison","flying","normal"]],
         ground: [["grass","water","ice"],["electric","poison","rock"]],
         poison: [["psychic","ground"],["grass","fighting","poison","bug","fairy"]],
@@ -16,6 +16,7 @@ const typeDb = {
         flying: [["electric","rock","ice"],["grass","fighting","ground","bug"]],
         dragon: [["ice","dragon","fairy"],["grass","fire","water","electric"]],
         dark: [["fighting","bug","fairy"],["ghost","dark"]],
+        steel: [["fire"],["normal"]],
         fairy: [["poison","steel"],["fighting","bug","dragon","dark"]],
         normal: [["fighting"],["ghost"]]
     }

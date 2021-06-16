@@ -34,7 +34,7 @@ class PKMN extends Card{
         let svg;
 
         let artSpecMod = this.isEX ? this.special : '';
-        let art = `<image href='MEDIA/CARD_ART/PKMN/${artSpecMod + this.pkmnName}.jpg' width='178' x='5' y='10'/>`;
+        let art = `<image href='MEDIA/CARD_ART/PKMN/${artSpecMod + this.pkmnName}.jpg' width='178' x='0' y='2'/>`;
         let bottom = this.drawBottom(this.baseParts.setInfo, this.types, this.retreatCost);
         let top = this.drawTop(this.pkmnName, this.types, this.hp, this.stage, this.special);
         let cardClasses = this.isEX ? "CARD PKMN SPEC" : "CARD PKMN";

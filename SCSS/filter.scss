@@ -1,7 +1,7 @@
 #filter{
     position: fixed;
     top: 0; left: 0;
-    width: 100%; height: 48px;
+    width: 250px; height: 100%;
     border-bottom: 1px solid #FFF;
     background: #FFF;
     z-index: 999;
@@ -16,6 +16,8 @@
     }
 
     button.filter-button{
+      display: none; 
+        @media (max-width: 800px) {display: block}
       background: none;
       border: 1px solid #1C1C3A;
         border-radius: 4px;
@@ -42,7 +44,8 @@
       width: 100%;
       background: #FFF;
       border-top: 1px solid #1C1C3A;
-      height: 0px;
+      height: auto;
+      @media (max-width: 800px) { height: 0px }
       overflow: hidden;
 
       .filter-wrap{
@@ -99,4 +102,9 @@
         }
       }
     } // Filters
+
+    @media (max-width: 800px){ 
+      width: 100%; height: 48px;
+      border-bottom: 1px solid #FFF;
+    }
   }

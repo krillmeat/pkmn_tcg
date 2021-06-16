@@ -8,7 +8,8 @@ const typeGroup = filterNav.querySelector("ul.types");
 
 var cardTypeFilters = ["pkmn","energy","trainer"];
 var setFilters = [];
-var typeFilters = ["grass","fire","water","electric","psychic","fighting","rock","ground","poison","bug","ice","ghost","flying","dragon","dark","steel","fairy","normal"];
+// var typeFilters = ["grass","fire","water","electric","psychic","fighting","rock","ground","poison","bug","ice","ghost","flying","dragon","dark","steel","fairy","normal"];
+var typeFilters = [];
 var currentFilters = [setFilters];
 
 var cardList = [];
@@ -72,6 +73,7 @@ function toggleSetFilter(e){
             if(setFilters.length != 4){
                 setFilters = ["rg","gs","rs","dp","xy","ss","eg"];
                 e.currentTarget.dataset.status = "selected";
+                selectAllSets();
                 createCardList();
             } else{
                 e.currentTarget.dataset.status = "deselected";
@@ -161,6 +163,12 @@ function drawCardList(){
             clearInterval(drawInterval);
         }
     },50);
+}
+
+function selectAllSets(){
+    for(let set of setGroup.querySelectorAll("li")){
+        set.dataset.status = "selected";
+    }
 }
 
 
