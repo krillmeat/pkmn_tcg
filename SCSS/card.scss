@@ -202,7 +202,7 @@
                                 polygon{ fill: var.$dark; stroke-width: 0; }
                             }
 
-                            .DMG_TYPE .DMG_ICON *:not(g){ fill: var.$white }
+                            .DMG_TYPE .DMG_ICON *:not(g){ fill: var.$white; stroke-width: 0 }
 
                         }
                     }
@@ -482,7 +482,7 @@
                 .TOP {
                     .TOP_RECT{ @include var.d-d-s }
 
-                    .NAME text{ fill: var.$white }
+                    .NAME text{ fill: var.$white; font-size: 11px }
 
                     .TYPE_BARS{
                         .TEXT_BLOCK{

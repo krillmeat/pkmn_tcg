@@ -6,7 +6,7 @@ const cardTypeGroup = filterNav.querySelector("ul.card-types");
 const setGroup = filterNav.querySelector("ul.sets");
 const typeGroup = filterNav.querySelector("ul.types");
 
-var cardTypeFilters = ["pkmn","energy","trainer"];
+var cardTypeFilters = ["pkmn"];
 var setFilters = [];
 // var typeFilters = ["grass","fire","water","electric","psychic","fighting","rock","ground","poison","bug","ice","ghost","flying","dragon","dark","steel","fairy","normal"];
 var typeFilters = [];
