@@ -21,7 +21,7 @@
   "homepage": "https://github.com/terrorsaurusrex/pkmn_tcg#readme",
   "devDependencies": {
     "chai": "^4.2.0",
-    "mocha": "^8.0.1",
+    "mocha": "^8.4.0",
     "sass": "^1.26.10"
   },
   "dependencies": {}
